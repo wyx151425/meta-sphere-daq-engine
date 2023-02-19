@@ -62,9 +62,10 @@ NEWSPIDER_MODULE = 'daq_engine.spiders'
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'daq_engine.pipelines.DaqEnginePipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'daq_engine.pipelines.DaqEnginePipeline': 300,
+   'daq_engine.pipelines.WeiboMongoPipeline': 400,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -86,3 +87,11 @@ NEWSPIDER_MODULE = 'daq_engine.spiders'
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+MONGO_HOST = "127.0.0.1"
+MONGO_PORT = 27017
+MONGO_DB = "ms-daq-engine"
+MONGO_DOC_WEIBO = "weibo"
+MONGO_DOC_WEIBO_USER = "user"
+MONGO_USERNAME = "wyx151425"
+MONGO_PASSWORD = "151425"

@@ -1,4 +1,4 @@
-var a = {
+var weibo = {
     "visible": {
         "type": 0,
         "list_id": 0

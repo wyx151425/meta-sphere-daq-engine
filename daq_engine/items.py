@@ -21,7 +21,7 @@ class WeiboItem(scrapy.Item):
     text_length = scrapy.Field()
     reposts_count = scrapy.Field()
     comments_count = scrapy.Field()
-    attitudes_count = scrapy.Field()
+    attitudes_count = scrapy.Field()  # 点赞数
     region_name = scrapy.Field()
     source = scrapy.Field()
     weibo_url = scrapy.Field()
@@ -33,22 +33,26 @@ class WeiboItem(scrapy.Item):
 
 
 class WeiboUserItem(scrapy.Item):
-    origin_id = scrapy.Field()
-    origin_id_str = scrapy.Field()
+    id = scrapy.Field()
+    id_str = scrapy.Field()
 
-    screen_name = scrapy.Field()
-    avatar_url = scrapy.Field()
-    profile_url = scrapy.Field()
+    screen_name = scrapy.Field()  # 网名
     gender = scrapy.Field()
     location = scrapy.Field()
     description = scrapy.Field()
-    user_type = scrapy.Field()
 
-    followers_count = scrapy.Field()
+    profile_url = scrapy.Field()  # 个人主页网址
+    profile_image_url = scrapy.Field()
+    avatar_large_url = scrapy.Field()
+    avatar_hd_url = scrapy.Field()
+
+    followers_count = scrapy.Field()  # 粉丝数量
     followers_count_str = scrapy.Field()
-    friends_count = scrapy.Field()
+    friends_count = scrapy.Field()  # 关注数量
     friends_count_str = scrapy.Field()
+    statuses_count = scrapy.Field()  # 历史微博数量
+    statuses_count_str = scrapy.Field()
+
 
 class WeiboCommentItem(scrapy.Item):
     pass
-
