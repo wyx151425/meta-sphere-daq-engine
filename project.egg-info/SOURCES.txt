@@ -1,4 +1,8 @@
+.gitignore
+scrapy.cfg
 setup.py
+user.js
+weibo.js
 daq_engine/__init__.py
 daq_engine/items.py
 daq_engine/middlewares.py
@@ -14,6 +18,8 @@ daq_engine/spiders/weibo_account.py
 daq_engine/spiders/weibo_comment.py
 daq_engine/spiders/xinhuanet.py
 daq_engine/spiders/zhihu.py
+dbs/daq_engine.db
+dbs/default.db
 project.egg-info/PKG-INFO
 project.egg-info/SOURCES.txt
 project.egg-info/dependency_links.txt

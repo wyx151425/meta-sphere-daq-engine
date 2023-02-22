@@ -1,46 +1,63 @@
 import json
+import os
+import sys
 
 import scrapy
 from dateutil.parser import parse
+from scrapy.spiders import Rule
+from scrapy.linkextractors import LinkExtractor
+from scrapy_redis.spiders import RedisSpider
 
-from ..items import WeiboItem, WeiboUserItem
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from items import WeiboItem, WeiboUserItem
 
 
-class WeiboSpider(scrapy.Spider):
+class WeiboSpider(RedisSpider):
     name = 'weibo'
     allowed_domains = ['weibo.com']
-    search_url = 'https://s.weibo.com/weibo?q={}&page={}'
+    search_url = "https://s.weibo.com/weibo?q={}&page={}"
     weibo_url_format = "https://weibo.com/ajax/statuses/show?id={}"
     user_url_format = "https://weibo.com/ajax/profile/info?uid={}"
     prefix_url = 'https://s.weibo.com/'
 
-    cookies = {
-        "XSRF-TOKEN": "auESbpkyUl6XaudN-1mIijcu",
-        "login_sid_t": "8f8249df350597d962ed1b47f613e4ff",
-        "cross_origin_proto": "SSL",
-        "_s_tentry": "passport.weibo.com",
-        "Apache": "7698893317343.656.1676625108281",
-        "SINAGLOBAL": "7698893317343.656.1676625108281",
-        "ULV": "1676625108285:1: 1:1: 7698893317343.656.1676625108281:",
-        "WBtopGlobal_register_version": "2023021717",
-        "PC_TOKEN": "b7050a0e0e",
-        "SCF": "AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJBccPiEYeyU4Jzekvp3snX__jtSQ37zIFLpGapjiNu5Go.",
-        "SUB": "_2A25O9Zu-DeRhGeRO4lQS8izMzD6IHXVtgop2rDV8PUJbmtANLRD6kW9NUErOun1T8UBGT0Y8unbq9lxGijT8m8K9",
-        "SUBP": "0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5K-hUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt",
-        "ALF": "1679390946",
-        "WBPSESS": "Dt2hbAUaXfkVprjyrAZT_HaxuVWJ0u8PBhgtsyug_WRsocrV0L1Rka2vgIA5l5y-4RW5KPbU3YEZ5uRiNDNy410aQPr2ZRWesDE_0qHR0JgScuOQApt_dxTGBtUhybpFstgam_f4vB80_JsVHHexY1JoqwSKBMuIUNymCt93GiLdabk1nHsAMY5xTN6EHbaDyzJXH5u8HovIXaFCk0KhJg==",
-        "UOR": ",,login.sina.com.cn",
-        "SSOLoginState": "1676638818"
+    cookies_str = "login_sid_t=8f8249df350597d962ed1b47f613e4ff; cross_origin_proto=SSL; _s_tentry=passport.weibo.com; Apache=7698893317343.656.1676625108281; SINAGLOBAL=7698893317343.656.1676625108281; ULV=1676625108285:1:1:1:7698893317343.656.1676625108281:; UOR=,,www.baidu.com; webim_unReadCount=%7B%22time%22%3A1676892872283%2C%22dm_pub_total%22%3A0%2C%22chat_group_client%22%3A0%2C%22chat_group_notice%22%3A0%2C%22allcountNum%22%3A0%2C%22msgbox%22%3A0%7D; SCF=AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJB4Hc8aQeortjh-5GZV7COajkZyafOMQVZtemWPYLh_ic.; SUB=_2A25O9ytvDeRhGeRO4lQS8izMzD6IHXVthRunrDV8PUNbmtAGLU-nkW9NUErOumdMHkMVqoPBGYcs4TFZllbV65Y4; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5KzhUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt; ALF=1708428991; WBtopGlobal_register_version=2023021720; SSOLoginState=1676638818"
+    cookies = {cookie.split('=')[0]: cookie.split('=')[1] for cookie in cookies_str.split('; ')}
+
+    redis_key = 'ms-daq-engine:weibo:search_urls'
+
+    headers = {
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "zh-CN,zh;q=0.9",
+        "cache-control": "max-age=0",
+        "cookie": "login_sid_t=8f8249df350597d962ed1b47f613e4ff; cross_origin_proto=SSL; _s_tentry=passport.weibo.com; Apache=7698893317343.656.1676625108281; SINAGLOBAL=7698893317343.656.1676625108281; ULV=1676625108285:1:1:1:7698893317343.656.1676625108281:; UOR=,,www.baidu.com; webim_unReadCount=%7B%22time%22%3A1676892872283%2C%22dm_pub_total%22%3A0%2C%22chat_group_client%22%3A0%2C%22chat_group_notice%22%3A0%2C%22allcountNum%22%3A0%2C%22msgbox%22%3A0%7D; SCF=AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJB4Hc8aQeortjh-5GZV7COajkZyafOMQVZtemWPYLh_ic.; SUB=_2A25O9ytvDeRhGeRO4lQS8izMzD6IHXVthRunrDV8PUNbmtAGLU-nkW9NUErOumdMHkMVqoPBGYcs4TFZllbV65Y4; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5KzhUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt; ALF=1708428991; WBtopGlobal_register_version=2023021720; SSOLoginState=1676638818",
+        "referer": "https://weibo.com/",
+        "upgrade-insecure-requests": 1,
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
     }
 
-    def start_requests(self):
-        start_url = self.search_url.format('联想小新', '1')
-        yield scrapy.Request(start_url, callback=self.parse, cookies=self.cookies)
+    rules = [
+        Rule(LinkExtractor(
+            restrict_css=('.top-cat', '.sub-cat', '.cat-item')
+        ), callback='parse', follow=True),
+    ]
+
+    def __init__(self, *args, **kwargs):
+        domain = kwargs.pop("domain", "")
+        self.allowed_domains = list(filter(None, domain.split(",")))
+        super(WeiboSpider, self).__init__(*args, **kwargs)
+
+    def make_requests_from_url(self, url):
+        cookies_str = "login_sid_t=8f8249df350597d962ed1b47f613e4ff; cross_origin_proto=SSL; _s_tentry=passport.weibo.com; Apache=7698893317343.656.1676625108281; SINAGLOBAL=7698893317343.656.1676625108281; ULV=1676625108285:1:1:1:7698893317343.656.1676625108281:; UOR=,,www.baidu.com; webim_unReadCount=%7B%22time%22%3A1676892872283%2C%22dm_pub_total%22%3A0%2C%22chat_group_client%22%3A0%2C%22chat_group_notice%22%3A0%2C%22allcountNum%22%3A0%2C%22msgbox%22%3A0%7D; SCF=AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJB4Hc8aQeortjh-5GZV7COajkZyafOMQVZtemWPYLh_ic.; SUB=_2A25O9ytvDeRhGeRO4lQS8izMzD6IHXVthRunrDV8PUNbmtAGLU-nkW9NUErOumdMHkMVqoPBGYcs4TFZllbV65Y4; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5KzhUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt; ALF=1708428991; WBtopGlobal_register_version=2023021720; SSOLoginState=1676638818"
+        cookies = {cookie.split('=')[0]: cookie.split('=')[1] for cookie in cookies_str.split('; ')}
+        return scrapy.Request(url, dont_filter=True, callback=self.parse, cookies=cookies)
+
+    # def start_requests(self):
+    #     start_url = self.search_url.format("联想小新", "1")
+    #     yield scrapy.Request(start_url, callback=self.parse, cookies=self.cookies)
 
     def parse(self, response, **kwargs):
         card_tags = response.xpath('//div[@class="card"]')
-
-        weibo_items = []
 
         for card_tag in card_tags:
             weibo_item = WeiboItem()
@@ -62,24 +79,18 @@ class WeiboSpider(scrapy.Spider):
             user_profile_url = "https://weibo.com/u/" + user_id
             weibo_item["user_profile_url"] = user_profile_url
 
+            print(weibo_item)
+
             # 解析微博详细内容
             yield scrapy.Request(self.weibo_url_format.format(weibo_id), callback=self.parse_weibo_detail,
                                  cookies=self.cookies,
                                  meta={"weibo_item": weibo_item})
 
-            # 解析微博所属用户详细信息
-            user_detail_url = "https://weibo.com/ajax/profile/info?uid={}".format(user_id)
-            yield scrapy.Request(user_detail_url, callback=self.parse_user_detail, cookies=self.cookies,
-                                 meta={"weibo_item": weibo_item})
-
-            print(weibo_item)
-            weibo_items.append(weibo_item)
-
         # 检索下一页
-        # next_page_tag = response.xpath('//div[@class="m-page"]//a[@class="next"]')
-        # if 0 != len(next_page_tag):
-        #     next_url = self.prefix_url + next_page_tag[0].xpath('./@href').extract_first()
-        #     yield scrapy.Request(next_url, callback=self.parse, cookies=self.cookies)
+        next_page_tag = response.xpath('//div[@class="m-page"]//a[@class="next"]')
+        if 0 != len(next_page_tag):
+            next_url = self.prefix_url + next_page_tag[0].xpath('./@href').extract_first()
+            yield scrapy.Request(next_url, callback=self.parse, cookies=self.cookies)
 
     def parse_weibo_detail(self, response):
         weibo_item = response.meta['weibo_item']
@@ -98,7 +109,10 @@ class WeiboSpider(scrapy.Spider):
         weibo_item["region_name"] = weibo_obj["region_name"].split(" ")[-1]
         weibo_item["source"] = weibo_obj["source"]
 
-        return weibo_item
+        # 解析微博所属用户详细信息
+        user_detail_url = "https://weibo.com/ajax/profile/info?uid={}".format(weibo_item["user_id"])
+        yield scrapy.Request(user_detail_url, callback=self.parse_user_detail, cookies=self.cookies,
+                             meta={"weibo_item": weibo_item})
 
     def parse_user_detail(self, response):
         weibo_item = response.meta['weibo_item']
@@ -140,4 +154,4 @@ class WeiboSpider(scrapy.Spider):
 
         weibo_item["user"] = user
 
-        return weibo_item
+        yield weibo_item
