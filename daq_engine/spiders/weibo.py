@@ -4,8 +4,6 @@ import sys
 
 import scrapy
 from dateutil.parser import parse
-from scrapy.spiders import Rule
-from scrapy.linkextractors import LinkExtractor
 from scrapy_redis.spiders import RedisSpider
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
@@ -13,6 +11,7 @@ from items import WeiboItem, WeiboUserItem
 
 
 class WeiboSpider(RedisSpider):
+# class WeiboSpider(scrapy.Spider):
     name = 'weibo'
     allowed_domains = ['weibo.com']
     search_url = "https://s.weibo.com/weibo?q={}&page={}"
@@ -20,27 +19,10 @@ class WeiboSpider(RedisSpider):
     user_url_format = "https://weibo.com/ajax/profile/info?uid={}"
     prefix_url = 'https://s.weibo.com/'
 
-    cookies_str = "login_sid_t=8f8249df350597d962ed1b47f613e4ff; cross_origin_proto=SSL; _s_tentry=passport.weibo.com; Apache=7698893317343.656.1676625108281; SINAGLOBAL=7698893317343.656.1676625108281; ULV=1676625108285:1:1:1:7698893317343.656.1676625108281:; UOR=,,www.baidu.com; webim_unReadCount=%7B%22time%22%3A1676892872283%2C%22dm_pub_total%22%3A0%2C%22chat_group_client%22%3A0%2C%22chat_group_notice%22%3A0%2C%22allcountNum%22%3A0%2C%22msgbox%22%3A0%7D; SCF=AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJB4Hc8aQeortjh-5GZV7COajkZyafOMQVZtemWPYLh_ic.; SUB=_2A25O9ytvDeRhGeRO4lQS8izMzD6IHXVthRunrDV8PUNbmtAGLU-nkW9NUErOumdMHkMVqoPBGYcs4TFZllbV65Y4; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5KzhUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt; ALF=1708428991; WBtopGlobal_register_version=2023021720; SSOLoginState=1676638818"
+    cookies_str = "SINAGLOBAL=7698893317343.656.1676625108281; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5KMhUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt; UOR=,,www.baidu.com; ALF=1683341028; SSOLoginState=1680749028; SCF=AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJBwxD5DwPnT3SoJYoezuNbL1gdQ4OLPofGgB3Pady_gAs.; SUB=_2A25JKkG0DeRhGeRO4lQS8izMzD6IHXVqXjR8rDV8PUNbmtANLRWjkW9NUErOugbYiofoTDh5HTj1ccizdBEYT91N; _s_tentry=-; Apache=8762158465412.307.1680773289979; ULV=1680773290661:5:1:1:8762158465412.307.1680773289979:1679986583023"
     cookies = {cookie.split('=')[0]: cookie.split('=')[1] for cookie in cookies_str.split('; ')}
 
     redis_key = 'ms-daq-engine:weibo:search_urls'
-
-    headers = {
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-        "accept-encoding": "gzip, deflate, br",
-        "accept-language": "zh-CN,zh;q=0.9",
-        "cache-control": "max-age=0",
-        "cookie": "login_sid_t=8f8249df350597d962ed1b47f613e4ff; cross_origin_proto=SSL; _s_tentry=passport.weibo.com; Apache=7698893317343.656.1676625108281; SINAGLOBAL=7698893317343.656.1676625108281; ULV=1676625108285:1:1:1:7698893317343.656.1676625108281:; UOR=,,www.baidu.com; webim_unReadCount=%7B%22time%22%3A1676892872283%2C%22dm_pub_total%22%3A0%2C%22chat_group_client%22%3A0%2C%22chat_group_notice%22%3A0%2C%22allcountNum%22%3A0%2C%22msgbox%22%3A0%7D; SCF=AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJB4Hc8aQeortjh-5GZV7COajkZyafOMQVZtemWPYLh_ic.; SUB=_2A25O9ytvDeRhGeRO4lQS8izMzD6IHXVthRunrDV8PUNbmtAGLU-nkW9NUErOumdMHkMVqoPBGYcs4TFZllbV65Y4; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5KzhUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt; ALF=1708428991; WBtopGlobal_register_version=2023021720; SSOLoginState=1676638818",
-        "referer": "https://weibo.com/",
-        "upgrade-insecure-requests": 1,
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
-    }
-
-    rules = [
-        Rule(LinkExtractor(
-            restrict_css=('.top-cat', '.sub-cat', '.cat-item')
-        ), callback='parse', follow=True),
-    ]
 
     def __init__(self, *args, **kwargs):
         domain = kwargs.pop("domain", "")
@@ -48,13 +30,13 @@ class WeiboSpider(RedisSpider):
         super(WeiboSpider, self).__init__(*args, **kwargs)
 
     def make_requests_from_url(self, url):
-        cookies_str = "login_sid_t=8f8249df350597d962ed1b47f613e4ff; cross_origin_proto=SSL; _s_tentry=passport.weibo.com; Apache=7698893317343.656.1676625108281; SINAGLOBAL=7698893317343.656.1676625108281; ULV=1676625108285:1:1:1:7698893317343.656.1676625108281:; UOR=,,www.baidu.com; webim_unReadCount=%7B%22time%22%3A1676892872283%2C%22dm_pub_total%22%3A0%2C%22chat_group_client%22%3A0%2C%22chat_group_notice%22%3A0%2C%22allcountNum%22%3A0%2C%22msgbox%22%3A0%7D; SCF=AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJB4Hc8aQeortjh-5GZV7COajkZyafOMQVZtemWPYLh_ic.; SUB=_2A25O9ytvDeRhGeRO4lQS8izMzD6IHXVthRunrDV8PUNbmtAGLU-nkW9NUErOumdMHkMVqoPBGYcs4TFZllbV65Y4; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5KzhUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt; ALF=1708428991; WBtopGlobal_register_version=2023021720; SSOLoginState=1676638818"
+        cookies_str = "SINAGLOBAL=7698893317343.656.1676625108281; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5KMhUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt; UOR=,,www.baidu.com; ULV=1679986583023:4:1:1:2908704636197.419.1679986583017:1677581670786; XSRF-TOKEN=9gIb8ASw11N-AxWytxYMDVaM; ALF=1683341028; SSOLoginState=1680749028; SCF=AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJBwxD5DwPnT3SoJYoezuNbL1gdQ4OLPofGgB3Pady_gAs.; SUB=_2A25JKkG0DeRhGeRO4lQS8izMzD6IHXVqXjR8rDV8PUNbmtANLRWjkW9NUErOugbYiofoTDh5HTj1ccizdBEYT91N; WBPSESS=j1bUqD_uu3DXTXvt20EN1O1sMUDbqv3FNH3iWPBaPvGl9W44tnW4xNxyukYfeSnltGq5WvCqYsZ1zDdqc3zmu6ZXhEUuWc79St53LpJmg_8CarhS8JhP88SZVpUteAuDA0572h2dy77HyJD4cK0SFw=="
         cookies = {cookie.split('=')[0]: cookie.split('=')[1] for cookie in cookies_str.split('; ')}
         return scrapy.Request(url, dont_filter=True, callback=self.parse, cookies=cookies)
 
-    # def start_requests(self):
-    #     start_url = self.search_url.format("联想小新", "1")
-    #     yield scrapy.Request(start_url, callback=self.parse, cookies=self.cookies)
+    def start_requests(self):
+        start_url = self.search_url.format("联想小新", "1")
+        yield scrapy.Request(start_url, callback=self.parse, cookies=self.cookies)
 
     def parse(self, response, **kwargs):
         card_tags = response.xpath('//div[@class="card"]')
