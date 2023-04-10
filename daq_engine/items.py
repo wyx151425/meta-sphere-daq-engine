@@ -13,6 +13,9 @@ class DaqEngineItem(scrapy.Item):
 
 
 class WeiboItem(scrapy.Item):
+    task_code = scrapy.Field()
+    keyword = scrapy.Field()
+
     mid = scrapy.Field()
     mblog_id = scrapy.Field()
     created_at = scrapy.Field()

@@ -92,7 +92,6 @@ MONGO_HOST = "127.0.0.1"
 MONGO_PORT = 27017
 MONGO_DB = "ms-daq-engine"
 MONGO_DOC_WEIBO = "weibo"
-MONGO_DOC_WEIBO_USER = "weibo_user"
 MONGO_USERNAME = "wyx151425"
 MONGO_PASSWORD = "151425"
 
@@ -101,8 +100,8 @@ REDIS_PORT = 6379
 REDIS_ENCODING = "utf-8"
 REDIS_PARAMS = {"password": "151425"}
 
-DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
-SCHEDULER = "scrapy_redis.scheduler.Scheduler"
-SCHEDULER_PERSIST = True
+# DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+# SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+# SCHEDULER_PERSIST = True
 
 DOWNLOAD_DELAY = 1

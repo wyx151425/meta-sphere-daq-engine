@@ -1,0 +1,1356 @@
+2023-04-08 16:44:21 [scrapy.utils.log] INFO: Scrapy 2.5.1 started (bot: daq_engine)
+2023-04-08 16:44:21 [scrapy.utils.log] INFO: Versions: lxml 4.6.4.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.6.0, w3lib 1.22.0, Twisted 21.7.0, Python 3.9.9 (tags/v3.9.9:ccb0e6a, Nov 15 2021, 18:08:50) [MSC v.1929 64 bit (AMD64)], pyOpenSSL 21.0.0 (OpenSSL 1.1.1l  24 Aug 2021), cryptography 36.0.0, Platform Windows-10-10.0.19044-SP0
+2023-04-08 16:44:21 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2023-04-08 16:44:21 [scrapy.crawler] INFO: Overridden settings:
+{'BOT_NAME': 'daq_engine',
+ 'DOWNLOAD_DELAY': 1,
+ 'LOG_FILE': 'logs\\ms-daq-engine\\weibo\\8d0f19b5d5e911ed9929005056c00008.log',
+ 'NEWSPIDER_MODULE': 'daq_engine.spiders',
+ 'SPIDER_MODULES': ['daq_engine.spiders']}
+2023-04-08 16:44:21 [scrapy.extensions.telnet] INFO: Telnet Password: d8c52137fcad4b1c
+2023-04-08 16:44:21 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2023-04-08 16:44:22 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2023-04-08 16:44:22 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2023-04-08 16:44:22 [scrapy.middleware] INFO: Enabled item pipelines:
+['daq_engine.pipelines.DaqEnginePipeline',
+ 'daq_engine.pipelines.WeiboMongoPipeline',
+ 'scrapy_redis.pipelines.RedisPipeline']
+2023-04-08 16:44:22 [scrapy.core.engine] INFO: Spider opened
+2023-04-08 16:44:22 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2023-04-08 16:44:22 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6024
+2023-04-08 16:44:23 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1> (referer: None)
+2023-04-08 16:44:23 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=My7lyCEE9> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:24 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=1> (referer: None)
+2023-04-08 16:44:24 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MASaDruVS> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:25 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=2> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:26 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MASK0C8hw> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:26 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=2> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=1)
+2023-04-08 16:44:27 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MARGGz5Qw> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:28 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=3> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=2)
+2023-04-08 16:44:28 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MAUL6kE7M> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:29 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=3> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=2)
+2023-04-08 16:44:29 [scrapy.dupefilters] DEBUG: Filtered duplicate request: <GET https://weibo.com/ajax/statuses/show?id=MvJshboSM> - no more duplicates will be shown (see DUPEFILTER_DEBUG to show all duplicates)
+2023-04-08 16:44:30 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MAVtuxjSy> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:30 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=4> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=3)
+2023-04-08 16:44:31 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MAVAqfusp> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:32 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=4> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=3)
+2023-04-08 16:44:32 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MB01OFqVt> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:33 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=5> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=4)
+2023-04-08 16:44:34 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MB2jgjvvx> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:34 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=5> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=4)
+2023-04-08 16:44:35 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MANs6cMCn> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:35 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=6> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=5)
+2023-04-08 16:44:36 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MASWWA5H7> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:36 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=6> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=5)
+2023-04-08 16:44:37 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=7> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=6)
+2023-04-08 16:44:37 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MvJshboSM> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=1)
+2023-04-08 16:44:38 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=8> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=7)
+2023-04-08 16:44:38 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=2002020501> (referer: https://weibo.com/ajax/statuses/show?id=My7lyCEE9)
+2023-04-08 16:44:39 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=2002020501>
+{'attitudes_count': 606,
+ 'comments_count': 221,
+ 'created_at': '2023-03-20 10:30:03',
+ 'keyword': '联想小新',
+ 'mblog_id': 'My7lyCEE9',
+ 'mid': '4881313969212713',
+ 'region_name': '广东',
+ 'reposts_count': 235,
+ 'source': '<a target="_blank" href="https://t.sina.com.cn" '
+           'rel="nofollow">微博视频号</a>',
+ 'task_code': 'test_task_code',
+ 'text': '学生党和职场打工人的笔记本怎么选？这类群体在选购时往往不是以单纯的性能输出为标准，而是对设计、体积、性能、续航都有一定要求。作为联想为这类人群量身定制的产品，联想小新系列笔记本在设计、性能等等方面都做了针对的配置和优化。<br '
+         '/><br />标配1TB硬盘，拥有60W高性能释放和2.8K分辨率、120Hz刷新率的 \u200b\u200b\u200b '
+         '...<span class="expand">展开</span>',
+ 'text_length': 448,
+ 'text_raw': '学生党和职场打工人的笔记本怎么选？这类群体在选购时往往不是以单纯的性能输出为标准，而是对设计、体积、性能、续航都有一定要求。作为联想为这类人群量身定制的产品，联想小新系列笔记本在设计、性能等等方面都做了针对的配置和优化。\n'
+             '\n'
+             '标配1TB硬盘，拥有60W高性能释放和2.8K分辨率、120Hz刷新率的 \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax2.sinaimg.cn/crop.0.0.750.750.1024/77546895ly8gh0sv9xi73j20ku0kugms.jpg?KID=imgbed,tva&Expires=1680954278&ssig=k%2Bm8ZtfuBm',
+          'avatar_large_url': 'https://tvax2.sinaimg.cn/crop.0.0.750.750.180/77546895ly8gh0sv9xi73j20ku0kugms.jpg?KID=imgbed,tva&Expires=1680954278&ssig=zHk8LVW0XK',
+          'description': '专注科技互联网、手机数码3C，热衷于分享生活日常、产品体验。合作V：niuwanya',
+          'followers_count': 1019487,
+          'followers_count_str': '101.9万',
+          'friends_count': 1091,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 2002020501,
+          'id_str': '2002020501',
+          'location': '广东 深圳',
+          'profile_image_url': 'https://tvax2.sinaimg.cn/crop.0.0.750.750.50/77546895ly8gh0sv9xi73j20ku0kugms.jpg?KID=imgbed,tva&Expires=1680954278&ssig=yQ8iqbpsOl',
+          'profile_url': 'https://weibo.com/u/2002020501',
+          'screen_name': '牛丸科技',
+          'statuses_count': 17169,
+          'statuses_count_str': ''},
+ 'user_id': '2002020501',
+ 'user_profile_url': 'https://weibo.com/u/2002020501',
+ 'weibo_url': 'https://weibo.com/2002020501/My7lyCEE9'}
+2023-04-08 16:44:40 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=9> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=8)
+2023-04-08 16:44:40 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MxzjDBOQl> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=1)
+2023-04-08 16:44:41 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=10> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=9)
+2023-04-08 16:44:41 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MxGfUmCTh> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=1)
+2023-04-08 16:44:42 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=11> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=10)
+2023-04-08 16:44:42 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MxvUK6DLR> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=1)
+2023-04-08 16:44:42 [scrapy.core.scraper] ERROR: Spider error processing <GET https://weibo.com/ajax/statuses/show?id=MxvUK6DLR> (referer: https://s.weibo.com/weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=1)
+Traceback (most recent call last):
+  File "D:\Python\Python39\lib\site-packages\scrapy\utils\defer.py", line 120, in iter_errback
+    yield next(it)
+  File "D:\Python\Python39\lib\site-packages\scrapy\utils\python.py", line 353, in __next__
+    return next(self.data)
+  File "D:\Python\Python39\lib\site-packages\scrapy\utils\python.py", line 353, in __next__
+    return next(self.data)
+  File "D:\Python\Python39\lib\site-packages\scrapy\core\spidermw.py", line 56, in _evaluate_iterable
+    for r in iterable:
+  File "D:\Python\Python39\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "D:\Python\Python39\lib\site-packages\scrapy\core\spidermw.py", line 56, in _evaluate_iterable
+    for r in iterable:
+  File "D:\Python\Python39\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 342, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "D:\Python\Python39\lib\site-packages\scrapy\core\spidermw.py", line 56, in _evaluate_iterable
+    for r in iterable:
+  File "D:\Python\Python39\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 40, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "D:\Python\Python39\lib\site-packages\scrapy\core\spidermw.py", line 56, in _evaluate_iterable
+    for r in iterable:
+  File "D:\Python\Python39\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "D:\Python\Python39\lib\site-packages\scrapy\core\spidermw.py", line 56, in _evaluate_iterable
+    for r in iterable:
+  File "G:\Supreme\daq_engine\daq_engine\spiders\weibo.py", line 96, in parse_weibo_detail
+    weibo_item["region_name"] = weibo_obj["region_name"].split(" ")[-1]
+KeyError: 'region_name'
+2023-04-08 16:44:43 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=12> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=11)
+2023-04-08 16:44:43 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=6999883892> (referer: https://weibo.com/ajax/statuses/show?id=MASaDruVS)
+2023-04-08 16:44:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=6999883892>
+{'attitudes_count': 1,
+ 'comments_count': 4,
+ 'created_at': '2023-04-07 13:22:51',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MASaDruVS',
+ 'mid': '4887880436553764',
+ 'region_name': '广东',
+ 'reposts_count': 0,
+ 'source': '<a target="_blank" target="_blank" target="_blank" '
+           'href="https://app.weibo.com/t/feed/13mmrA" '
+           'rel="nofollow">OPPO智能手机</a>',
+ 'task_code': 'test_task_code',
+ 'text': '<a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%23" '
+         'target="_blank">#联想小新#</a>为什么联想小新经常死机呀，一开始用好好的，没多久就老是随缘死机（有时候没开什么页面就突然间死机），就个电源键亮着<img '
+         'alt="[跪了]" title="[跪了]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/75/2018new_gui_org.png" '
+         '/><img alt="[跪了]" title="[跪了]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/75/2018new_gui_org.png" '
+         '/><img alt="[跪了]" title="[跪了]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/75/2018new_gui_org.png" '
+         '/>然后一查，发现好多人都是这样 \u200b\u200b\u200b',
+ 'text_length': 168,
+ 'text_raw': '#联想小新#为什么联想小新经常死机呀，一开始用好好的，没多久就老是随缘死机（有时候没开什么页面就突然间死机），就个电源键亮着[跪了][跪了][跪了]然后一查，发现好多人都是这样 '
+             '\u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax2.sinaimg.cn/crop.0.0.607.607.1024/007DINz6ly8hac6v3iv83j30gv0gv3z9.jpg?KID=imgbed,tva&Expires=1680954283&ssig=H%2BoO%2BThVn5',
+          'avatar_large_url': 'https://tvax2.sinaimg.cn/crop.0.0.607.607.180/007DINz6ly8hac6v3iv83j30gv0gv3z9.jpg?KID=imgbed,tva&Expires=1680954283&ssig=5RZ1mKulbd',
+          'description': '',
+          'followers_count': 41,
+          'followers_count_str': '41',
+          'friends_count': 290,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 6999883892,
+          'id_str': '6999883892',
+          'location': '广东',
+          'profile_image_url': 'https://tvax2.sinaimg.cn/crop.0.0.607.607.50/007DINz6ly8hac6v3iv83j30gv0gv3z9.jpg?KID=imgbed,tva&Expires=1680954283&ssig=8C%2Fdhpgmj5',
+          'profile_url': 'https://weibo.com/u/6999883892',
+          'screen_name': 'wen_woe',
+          'statuses_count': 114,
+          'statuses_count_str': ''},
+ 'user_id': '6999883892',
+ 'user_profile_url': 'https://weibo.com/u/6999883892',
+ 'weibo_url': 'https://weibo.com/6999883892/MASaDruVS'}
+2023-04-08 16:44:45 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=6456779567> (referer: https://weibo.com/ajax/statuses/show?id=MASK0C8hw)
+2023-04-08 16:44:45 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=6456779567>
+{'attitudes_count': 1,
+ 'comments_count': 0,
+ 'created_at': '2023-04-07 14:50:00',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MASK0C8hw',
+ 'mid': '4887902369088302',
+ 'region_name': '广东',
+ 'reposts_count': 1,
+ 'source': '微博网页版',
+ 'task_code': 'test_task_code',
+ 'text': '联想小新首款 mini 高性能主机官宣：1L 体积、内置电源、13 代酷睿标压处理器<br /><br />联想小新首款 mini '
+         '高性能主机宣布将于 4 月 28 日发布，体积约 1L，搭载英特尔 13 代酷睿标压处理器。<br /><br '
+         '/>从图中可以看到，这款主机采用了斜条纹顶盖，正面配有 USB-A、USB-C、3.5mm 音频接口，支持最多四屏连接。<br '
+         '/><br />此外， \u200b\u200b\u200b ...<span class="expand">展开</span>',
+ 'text_length': 424,
+ 'text_raw': '联想小新首款 mini 高性能主机官宣：1L 体积、内置电源、13 代酷睿标压处理器\n'
+             '\n'
+             '联想小新首款 mini 高性能主机宣布将于 4 月 28 日发布，体积约 1L，搭载英特尔 13 代酷睿标压处理器。\n'
+             '\n'
+             '从图中可以看到，这款主机采用了斜条纹顶盖，正面配有 USB-A、USB-C、3.5mm 音频接口，支持最多四屏连接。\n'
+             '\n'
+             '此外， \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax2.sinaimg.cn/crop.0.0.1080.1080.1024/0072XZjVly8g071vk5thtj30u00u0q3t.jpg?KID=imgbed,tva&Expires=1680954285&ssig=vEUrcqsGfD',
+          'avatar_large_url': 'https://tvax2.sinaimg.cn/crop.0.0.1080.1080.180/0072XZjVly8g071vk5thtj30u00u0q3t.jpg?KID=imgbed,tva&Expires=1680954285&ssig=efCoQ4P2iL',
+          'description': '数码最新最热时尚潮流',
+          'followers_count': 157221,
+          'followers_count_str': '15.7万',
+          'friends_count': 535,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 6456779567,
+          'id_str': '6456779567',
+          'location': '广东 深圳',
+          'profile_image_url': 'https://tvax2.sinaimg.cn/crop.0.0.1080.1080.50/0072XZjVly8g071vk5thtj30u00u0q3t.jpg?KID=imgbed,tva&Expires=1680954285&ssig=MOXLb1CS%2BT',
+          'profile_url': 'https://weibo.com/u/6456779567',
+          'screen_name': 'Beesing必炫数码',
+          'statuses_count': 28012,
+          'statuses_count_str': ''},
+ 'user_id': '6456779567',
+ 'user_profile_url': 'https://weibo.com/u/6456779567',
+ 'weibo_url': 'https://weibo.com/6456779567/MASK0C8hw'}
+2023-04-08 16:44:45 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=13> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=12)
+2023-04-08 16:44:46 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=5649318263> (referer: https://weibo.com/ajax/statuses/show?id=MARGGz5Qw)
+2023-04-08 16:44:46 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=5649318263>
+{'attitudes_count': 22,
+ 'comments_count': 9,
+ 'created_at': '2023-04-07 12:09:03',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MARGGz5Qw',
+ 'mid': '4887861868363956',
+ 'region_name': '陕西',
+ 'reposts_count': 1,
+ 'source': '',
+ 'task_code': 'test_task_code',
+ 'text': '联想小新要出mini主机了，颜值看着可以，现在不知道背面几个接口 \u200b\u200b\u200b',
+ 'text_length': 60,
+ 'text_raw': '联想小新要出mini主机了，颜值看着可以，现在不知道背面几个接口 \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax4.sinaimg.cn/crop.0.0.1080.1080.1024/006ajXKvly8hb3frl6k3xj30u00u0q3z.jpg?KID=imgbed,tva&Expires=1680954286&ssig=zDlKo87P9j',
+          'avatar_large_url': 'https://tvax4.sinaimg.cn/crop.0.0.1080.1080.180/006ajXKvly8hb3frl6k3xj30u00u0q3z.jpg?KID=imgbed,tva&Expires=1680954286&ssig=hYSwprdvS%2F',
+          'description': '合作私信，请备注来意',
+          'followers_count': 403983,
+          'followers_count_str': '40.4万',
+          'friends_count': 642,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 5649318263,
+          'id_str': '5649318263',
+          'location': '陕西',
+          'profile_image_url': 'https://tvax4.sinaimg.cn/crop.0.0.1080.1080.50/006ajXKvly8hb3frl6k3xj30u00u0q3z.jpg?KID=imgbed,tva&Expires=1680954286&ssig=Ka1Urv0GUZ',
+          'profile_url': 'https://weibo.com/u/5649318263',
+          'screen_name': 'IT魅力',
+          'statuses_count': 18972,
+          'statuses_count_str': ''},
+ 'user_id': '5649318263',
+ 'user_profile_url': 'https://weibo.com/u/5649318263',
+ 'weibo_url': 'https://weibo.com/5649318263/MARGGz5Qw'}
+2023-04-08 16:44:47 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=14> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=13)
+2023-04-08 16:44:47 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=6727500713> (referer: https://weibo.com/ajax/statuses/show?id=MAUL6kE7M)
+2023-04-08 16:44:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=6727500713>
+{'attitudes_count': 0,
+ 'comments_count': 1,
+ 'created_at': '2023-04-07 19:58:11',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MAUL6kE7M',
+ 'mid': '4887979924920802',
+ 'region_name': '陕西',
+ 'reposts_count': 0,
+ 'source': '<a target="_blank" target="_blank" target="_blank" target="_blank" '
+           'href="https://app.weibo.com/t/feed/3KaJUo" rel="nofollow">荣耀60 '
+           '5G</a>',
+ 'task_code': 'test_task_code',
+ 'text': '<a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%5B%E8%B6%85%E8%AF%9D%5D%23" '
+         'target="_blank"><a target="_blank" '
+         'href="https://weibo.com/p/1008085b1698b02d1feec7eb940b921abcb34f"><img '
+         'class="icon-link" '
+         'src="https://h5.sinaimg.cn/upload/100/959/2020/05/09/timeline_card_small_super_default.png"/>联想小新超话</a></a>为什么充不进去电呀？？？？<a '
+         'href=/n/联想小新 usercard="name=@联想小新">@联想小新</a> \u200b\u200b\u200b',
+ 'text_length': 51,
+ 'text_raw': '#联想小新[超话]#为什么充不进去电呀？？？？@联想小新 \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax3.sinaimg.cn/crop.0.0.664.664.1024/007lhUg1ly8ghm7kc1wj6j30ig0ig0wa.jpg?KID=imgbed,tva&Expires=1680954287&ssig=j4giKVLwOt',
+          'avatar_large_url': 'https://tvax3.sinaimg.cn/crop.0.0.664.664.180/007lhUg1ly8ghm7kc1wj6j30ig0ig0wa.jpg?KID=imgbed,tva&Expires=1680954287&ssig=1fgdHBi63L',
+          'description': '',
+          'followers_count': 8,
+          'followers_count_str': '8',
+          'friends_count': 22,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 6727500713,
+          'id_str': '6727500713',
+          'location': '其他',
+          'profile_image_url': 'https://tvax3.sinaimg.cn/crop.0.0.664.664.50/007lhUg1ly8ghm7kc1wj6j30ig0ig0wa.jpg?KID=imgbed,tva&Expires=1680954287&ssig=wDr0er723A',
+          'profile_url': 'https://weibo.com/u/6727500713',
+          'screen_name': '小肉kkarry',
+          'statuses_count': 25,
+          'statuses_count_str': ''},
+ 'user_id': '6727500713',
+ 'user_profile_url': 'https://weibo.com/u/6727500713',
+ 'weibo_url': 'https://weibo.com/6727500713/MAUL6kE7M'}
+2023-04-08 16:44:48 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=15> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=14)
+2023-04-08 16:44:49 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=5413401957> (referer: https://weibo.com/ajax/statuses/show?id=MAVtuxjSy)
+2023-04-08 16:44:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=5413401957>
+{'attitudes_count': 0,
+ 'comments_count': 0,
+ 'created_at': '2023-04-07 21:47:33',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MAVtuxjSy',
+ 'mid': '4888007447941242',
+ 'region_name': '山东',
+ 'reposts_count': 0,
+ 'source': '<a target="_blank" target="_blank" target="_blank" target="_blank" '
+           'target="_blank" href="https://app.weibo.com/t/feed/5t3gaD" '
+           'rel="nofollow">OPPO Reno5 Pro+ 5G</a>',
+ 'task_code': 'test_task_code',
+ 'text': '<a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%5B%E8%B6%85%E8%AF%9D%5D%23" '
+         'target="_blank"><a target="_blank" '
+         'href="https://weibo.com/p/1008085b1698b02d1feec7eb940b921abcb34f"><img '
+         'class="icon-link" '
+         'src="https://h5.sinaimg.cn/upload/100/959/2020/05/09/timeline_card_small_super_default.png"/>联想小新超话</a></a>真的恶心，2020年给老弟买的联想小新13pro过了维保期，黑屏了。后来听说他们宿舍有个同学也是这款，也黑屏了，还换了主板，花了1000多。我上网查才发现好多小新用户都出了这个问题，说是因为什么低温锡技术，联想都不给个说法吗，这种因为你们技术原因出现的问题，不需要召回产品或者 '
+         '\u200b\u200b\u200b ...<span class="expand">展开</span>',
+ 'text_length': 339,
+ 'text_raw': '#联想小新[超话]#真的恶心，2020年给老弟买的联想小新13pro过了维保期，黑屏了。后来听说他们宿舍有个同学也是这款，也黑屏了，还换了主板，花了1000多。我上网查才发现好多小新用户都出了这个问题，说是因为什么低温锡技术，联想都不给个说法吗，这种因为你们技术原因出现的问题，不需要召回产品或者 '
+             '\u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax1.sinaimg.cn/crop.0.0.996.996.1024/005Um58Nly8gxays1e5itj30ro0rptbw.jpg?KID=imgbed,tva&Expires=1680954289&ssig=NMMkI1HkEy',
+          'avatar_large_url': 'https://tvax1.sinaimg.cn/crop.0.0.996.996.180/005Um58Nly8gxays1e5itj30ro0rptbw.jpg?KID=imgbed,tva&Expires=1680954289&ssig=kS6%2FR0mbCv',
+          'description': '喏，可爱到爆炸👆',
+          'followers_count': 118,
+          'followers_count_str': '118',
+          'friends_count': 110,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 5413401957,
+          'id_str': '5413401957',
+          'location': '山东 青岛',
+          'profile_image_url': 'https://tvax1.sinaimg.cn/crop.0.0.996.996.50/005Um58Nly8gxays1e5itj30ro0rptbw.jpg?KID=imgbed,tva&Expires=1680954289&ssig=zOmtDoo3zn',
+          'profile_url': 'https://weibo.com/u/5413401957',
+          'screen_name': 'ler悦悦儿',
+          'statuses_count': 881,
+          'statuses_count_str': ''},
+ 'user_id': '5413401957',
+ 'user_profile_url': 'https://weibo.com/u/5413401957',
+ 'weibo_url': 'https://weibo.com/5413401957/MAVtuxjSy'}
+2023-04-08 16:44:50 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=16> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=15)
+2023-04-08 16:44:50 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=7759596380> (referer: https://weibo.com/ajax/statuses/show?id=MAVAqfusp)
+2023-04-08 16:44:50 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=7759596380>
+{'attitudes_count': 2,
+ 'comments_count': 2,
+ 'created_at': '2023-04-07 22:04:37',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MAVAqfusp',
+ 'mid': '4888011743692001',
+ 'region_name': '浙江',
+ 'reposts_count': 0,
+ 'source': '<a target="_blank" target="_blank" target="_blank" target="_blank" '
+           'href="https://app.weibo.com/t/feed/2GCyBg" rel="nofollow">OPPO '
+           'Reno4 5G</a>',
+ 'task_code': 'test_task_code',
+ 'text': '<a '
+         'href="//s.weibo.com/weibo?q=%23%E5%85%89%E9%81%87%E6%8D%A2%E5%8F%B7%5B%E8%B6%85%E8%AF%9D%5D%23" '
+         'target="_blank"><a target="_blank" '
+         'href="https://weibo.com/p/100808a2d3ea935daf6d6a806602a0178c8c7b"><img '
+         'class="icon-link" '
+         'src="https://h5.sinaimg.cn/upload/100/959/2020/05/09/timeline_card_small_super_default.png"/>光遇换号超话</a></a>小新联想 '
+         'Pad2022全原装平板能换到什么号，有没有人哇<img alt="[干饭人]" title="[干饭人]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/cb/2022_Foodie_org.png" '
+         '/> \u200b\u200b\u200b',
+ 'text_length': 74,
+ 'text_raw': '#光遇换号[超话]#小新联想 Pad2022全原装平板能换到什么号，有没有人哇[干饭人] \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax4.sinaimg.cn/crop.0.0.1071.1071.1024/008t8tukly8hc5c594dgbj30tr0trtd8.jpg?KID=imgbed,tva&Expires=1680954290&ssig=8X4V7bK0Ak',
+          'avatar_large_url': 'https://tvax4.sinaimg.cn/crop.0.0.1071.1071.180/008t8tukly8hc5c594dgbj30tr0trtd8.jpg?KID=imgbed,tva&Expires=1680954290&ssig=Wgx12t6%2FfG',
+          'description': '有需要加联系方式 wx：Yine8023',
+          'followers_count': 105,
+          'followers_count_str': '105',
+          'friends_count': 100,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 7759596380,
+          'id_str': '7759596380',
+          'location': '其他',
+          'profile_image_url': 'https://tvax4.sinaimg.cn/crop.0.0.1071.1071.50/008t8tukly8hc5c594dgbj30tr0trtd8.jpg?KID=imgbed,tva&Expires=1680954290&ssig=T2RDny3KcG',
+          'profile_url': 'https://weibo.com/u/7759596380',
+          'screen_name': 'xin凌壹',
+          'statuses_count': 12,
+          'statuses_count_str': ''},
+ 'user_id': '7759596380',
+ 'user_profile_url': 'https://weibo.com/u/7759596380',
+ 'weibo_url': 'https://weibo.com/7759596380/MAVAqfusp'}
+2023-04-08 16:44:51 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=17> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=16)
+2023-04-08 16:44:51 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=1788441355> (referer: https://weibo.com/ajax/statuses/show?id=MB01OFqVt)
+2023-04-08 16:44:51 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=1788441355>
+{'attitudes_count': 190,
+ 'comments_count': 139,
+ 'created_at': '2023-04-08 09:23:06',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MB01OFqVt',
+ 'mid': '4888182489874955',
+ 'region_name': '山东',
+ 'reposts_count': 41,
+ 'source': '微博仅供参考',
+ 'task_code': 'test_task_code',
+ 'text': '前一阵，发了一条联想小新Pro14 2023 锐龙版的视频，很多人说为啥封面是美女，视频里却是男的，这不，美图来了。<br /><br '
+         '/>再聊聊产品吧，整体来说，联想小新Pro14 '
+         '2023版的质感还是挺不错的，接口很全，保留了SD读卡器接口，日常传输文件/照片很方便。<br /><br '
+         '/>手上拿到的是锐龙版，锐龙7处理器+Tadeon 680核显，16G+ \u200b\u200b\u200b ...<span '
+         'class="expand">展开</span>',
+ 'text_length': 489,
+ 'text_raw': '前一阵，发了一条联想小新Pro14 2023 锐龙版的视频，很多人说为啥封面是美女，视频里却是男的，这不，美图来了。\n'
+             '\n'
+             '再聊聊产品吧，整体来说，联想小新Pro14 '
+             '2023版的质感还是挺不错的，接口很全，保留了SD读卡器接口，日常传输文件/照片很方便。\n'
+             '\n'
+             '手上拿到的是锐龙版，锐龙7处理器+Tadeon 680核显，16G+ \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax4.sinaimg.cn/crop.0.0.440.440.1024/6a99730bly8gnxgryu3igj20c80c9aad.jpg?KID=imgbed,tva&Expires=1680954291&ssig=qZ%2FQ8yk3YX',
+          'avatar_large_url': 'https://tvax4.sinaimg.cn/crop.0.0.440.440.180/6a99730bly8gnxgryu3igj20c80c9aad.jpg?KID=imgbed,tva&Expires=1680954291&ssig=bKVcEXFeN4',
+          'description': '数码博主，科技自媒体。数码评测、推广、合作请直接私信或加VX：739525499',
+          'followers_count': 600346,
+          'followers_count_str': '60万',
+          'friends_count': 1254,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 1788441355,
+          'id_str': '1788441355',
+          'location': '山东 青岛',
+          'profile_image_url': 'https://tvax4.sinaimg.cn/crop.0.0.440.440.50/6a99730bly8gnxgryu3igj20c80c9aad.jpg?KID=imgbed,tva&Expires=1680954291&ssig=Xu9hy6F5A3',
+          'profile_url': 'https://weibo.com/u/1788441355',
+          'screen_name': '毒科技',
+          'statuses_count': 9088,
+          'statuses_count_str': ''},
+ 'user_id': '1788441355',
+ 'user_profile_url': 'https://weibo.com/u/1788441355',
+ 'weibo_url': 'https://weibo.com/1788441355/MB01OFqVt'}
+2023-04-08 16:44:52 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=18> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=17)
+2023-04-08 16:44:53 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=6262851426> (referer: https://weibo.com/ajax/statuses/show?id=MB2jgjvvx)
+2023-04-08 16:44:53 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=6262851426>
+{'attitudes_count': 0,
+ 'comments_count': 0,
+ 'created_at': '2023-04-08 15:11:34',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MB2jgjvvx',
+ 'mid': '4888270184649351',
+ 'region_name': '福建',
+ 'reposts_count': 0,
+ 'source': 'iPhone客户端',
+ 'task_code': 'test_task_code',
+ 'text': '联想小新pro14，用了一个星期感觉很不错，轻薄便携，性能还能兼顾游戏，同时办公也是很不错的选择，屏幕素质真的高，比我上一台1080p的好不是一点，总的来说十分不错的一台笔记本。 '
+         '\u200b\u200b\u200b',
+ 'text_length': 168,
+ 'text_raw': '联想小新pro14，用了一个星期感觉很不错，轻薄便携，性能还能兼顾游戏，同时办公也是很不错的选择，屏幕素质真的高，比我上一台1080p的好不是一点，总的来说十分不错的一台笔记本。 '
+             '\u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax1.sinaimg.cn/crop.47.55.180.180.1024/006PQhKGly8fg3dd82zk2j307h07hq2y.jpg?KID=imgbed,tva&Expires=1680954292&ssig=QLCFaODSIb',
+          'avatar_large_url': 'https://tvax1.sinaimg.cn/crop.47.55.180.180.180/006PQhKGly8fg3dd82zk2j307h07hq2y.jpg?KID=imgbed,tva&Expires=1680954292&ssig=N1qi466tND',
+          'description': '',
+          'followers_count': 16,
+          'followers_count_str': '16',
+          'friends_count': 64,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 6262851426,
+          'id_str': '6262851426',
+          'location': '福建 厦门',
+          'profile_image_url': 'https://tvax1.sinaimg.cn/crop.47.55.180.180.50/006PQhKGly8fg3dd82zk2j307h07hq2y.jpg?KID=imgbed,tva&Expires=1680954292&ssig=QnjZ1wkm%2Bk',
+          'profile_url': 'https://weibo.com/u/6262851426',
+          'screen_name': '往忆z',
+          'statuses_count': 2,
+          'statuses_count_str': ''},
+ 'user_id': '6262851426',
+ 'user_profile_url': 'https://weibo.com/u/6262851426',
+ 'weibo_url': 'https://weibo.com/6262851426/MB2jgjvvx'}
+2023-04-08 16:44:53 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=19> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=18)
+2023-04-08 16:44:54 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=3771259924> (referer: https://weibo.com/ajax/statuses/show?id=MANs6cMCn)
+2023-04-08 16:44:54 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=3771259924>
+{'attitudes_count': 91,
+ 'comments_count': 3,
+ 'created_at': '2023-04-07 01:22:08',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MANs6cMCn',
+ 'mid': '4887699063046827',
+ 'region_name': '山东',
+ 'reposts_count': 4,
+ 'source': '博妻新浪微博4G版',
+ 'task_code': 'test_task_code',
+ 'text': '2022.11.7（转<br /><br /><a '
+         'href="//s.weibo.com/weibo?q=%23%E7%8E%8B%E4%B8%80%E5%8D%9A%E7%9A%84%E8%B1%B9%E6%AC%BE%E5%B0%B1%E4%BD%8D%23" '
+         'target="_blank">#王一博的豹款就位#</a>酷豹出击，实力奔赴！GET我的同款YIBO EDITION '
+         '【敢为系列】联想小新520智能投影仪、YOGA Pro 14s、YOGA Air 14s特别款，今晚18：30 锁定<a '
+         'href=/n/联想中国 usercard="name=@联想中国">@联想中国</a> <a '
+         'href="//s.weibo.com/weibo?q=%231107%E8%81%94%E6%83%B3%E6%98%9F%E5%85%89%E5%A4%9C%23" '
+         'target="_blank">#1107联想星光夜#</a>，期待与你相见！<a '
+         'href="//s.weibo.com/weibo?q=%23%E7%8E%8B%E4%B8%80%E5%8D%9A%E4%BB%A3%E8%A8%80%E8%81%94%E6%83%B3%23" '
+         'target="_blank">#王一博代言联想#</a><br /><br />直播回放🔗<a target="_blank" '
+         'href="https://weibo.com/l/wblive/p/show/1022:2321324832562517508490"><img '
+         'class="icon-link" '
+         'src="https://h5.sinaimg.cn/upload/2015/09/25/3/timeline_card_small_video_default.png"/>联想中国的微博直播</a> '
+         '\u200b\u200b\u200b <a target="_blank" '
+         'data-pid=e0c8dc14ly1hcqhjub2kjj20u01d97h1  '
+         'href="https://wx1.sinaimg.cn/orj960/e0c8dc14ly1hcqhjub2kjj20u01d97h1.jpg"><img '
+         'class="icon-link" '
+         'src="https://h5.sinaimg.cn/upload/2015/01/21/20/timeline_card_small_photo_default.png"/>查看图片</a>',
+ 'text_length': 253,
+ 'text_raw': '2022.11.7（转\n'
+             '\n'
+             '#王一博的豹款就位#酷豹出击，实力奔赴！GET我的同款YIBO EDITION 【敢为系列】联想小新520智能投影仪、YOGA '
+             'Pro 14s、YOGA Air 14s特别款，今晚18：30 锁定@联想中国 '
+             '#1107联想星光夜#，期待与你相见！#王一博代言联想#\n'
+             '\n'
+             '直播回放🔗http://t.cn/A6oRvoo0 \u200b\u200b\u200b '
+             'http://mapi/e0c8dc14ly1hcqhjub2kjj20u01d97h1',
+ 'user': {'avatar_hd_url': 'https://tvax2.sinaimg.cn/crop.0.0.640.640.1024/e0c8dc14ly8hc8xlod3q5j20hs0hsgny.jpg?KID=imgbed,tva&Expires=1680954294&ssig=J2ATQZqm8N',
+          'avatar_large_url': 'https://tvax2.sinaimg.cn/crop.0.0.640.640.180/e0c8dc14ly8hc8xlod3q5j20hs0hsgny.jpg?KID=imgbed,tva&Expires=1680954294&ssig=XnHphDhuSv',
+          'description': '是摩托姐姐一枚呀~',
+          'followers_count': 133805,
+          'followers_count_str': '13.4万',
+          'friends_count': 703,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 3771259924,
+          'id_str': '3771259924',
+          'location': '山东 青岛',
+          'profile_image_url': 'https://tvax2.sinaimg.cn/crop.0.0.640.640.50/e0c8dc14ly8hc8xlod3q5j20hs0hsgny.jpg?KID=imgbed,tva&Expires=1680954294&ssig=Zzup6c8ti%2F',
+          'profile_url': 'https://weibo.com/u/3771259924',
+          'screen_name': 'UNIQ一王一博I',
+          'statuses_count': 11203,
+          'statuses_count_str': ''},
+ 'user_id': '3771259924',
+ 'user_profile_url': 'https://weibo.com/u/3771259924',
+ 'weibo_url': 'https://weibo.com/3771259924/MANs6cMCn'}
+2023-04-08 16:44:55 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=20> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=19)
+2023-04-08 16:44:55 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MAhQK5lzN> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=6)
+2023-04-08 16:44:56 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=21> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=20)
+2023-04-08 16:44:56 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MsbNgCu0t> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F&page=6)
+2023-04-08 16:44:57 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=22> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=21)
+2023-04-08 16:44:57 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=1263406744> (referer: https://weibo.com/ajax/statuses/show?id=MvJshboSM)
+2023-04-08 16:44:58 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=1263406744>
+{'attitudes_count': 690,
+ 'comments_count': 95,
+ 'created_at': '2023-03-04 18:00:04',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MvJshboSM',
+ 'mid': '4875629012717260',
+ 'region_name': '北京',
+ 'reposts_count': 83,
+ 'source': '<a target="_blank" href="https://t.sina.com.cn" '
+           'rel="nofollow">微博视频号</a>',
+ 'task_code': 'test_task_code',
+ 'text': '【<a href=/n/司马南 usercard="name=@司马南">@司马南</a> ：联想“计划性报废门”】<a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%E7%AC%94%E8%AE%B0%E6%9C%AC%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F%23" '
+         'target="_blank">#联想小新笔记本计划性报废#</a> <a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E6%96%B0%E5%9E%8B%E4%BD%8E%E6%B8%A9%E9%94%A1%E8%86%8F%E7%84%8A%E6%8E%A5%E6%8A%80%E6%9C%AF%23" '
+         'target="_blank">#联想新型低温锡膏焊接技术#</a> <a '
+         'href="//s.weibo.com/weibo?q=%23%E5%8F%B8%E9%A9%AC%E5%8D%97%E8%B0%88%E8%81%94%E6%83%B3%23" '
+         'target="_blank">#司马南谈联想#</a> #司马南频道# <a target="_blank" '
+         'href="https://video.weibo.com/show?fid=1034:4875592676606017"><img '
+         'class="icon-link" '
+         'src="https://h5.sinaimg.cn/upload/2015/09/25/3/timeline_card_small_video_default.png"/>司马南的微博视频</a> '
+         '\u200b\u200b\u200b',
+ 'text_length': 136,
+ 'text_raw': '【@司马南 ：联想“计划性报废门”】#联想小新笔记本计划性报废# #联想新型低温锡膏焊接技术# #司马南谈联想# #司马南频道# '
+             'http://t.cn/A6C6wg2m \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax1.sinaimg.cn/crop.0.0.1080.1080.1024/4b4e0e98ly8gaeh0r5bgfj20u00u0acr.jpg?KID=imgbed,tva&Expires=1680954297&ssig=HxjgrdbPyt',
+          'avatar_large_url': 'https://tvax1.sinaimg.cn/crop.0.0.1080.1080.180/4b4e0e98ly8gaeh0r5bgfj20u00u0acr.jpg?KID=imgbed,tva&Expires=1680954297&ssig=sB1qI0tMCY',
+          'description': '微信公众号：司马南频道。一介不入流之文人耳。喜附庸风雅，好舞文弄墨，敢班门弄斧，常标新立异。根性妄为，孤行一意，小民忧国。',
+          'followers_count': 3167681,
+          'followers_count_str': '316.8万',
+          'friends_count': 2537,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 1263406744,
+          'id_str': '1263406744',
+          'location': '北京',
+          'profile_image_url': 'https://tvax1.sinaimg.cn/crop.0.0.1080.1080.50/4b4e0e98ly8gaeh0r5bgfj20u00u0acr.jpg?KID=imgbed,tva&Expires=1680954297&ssig=4HfaG%2FWae3',
+          'profile_url': 'https://weibo.com/u/1263406744',
+          'screen_name': '司马南',
+          'statuses_count': 63127,
+          'statuses_count_str': ''},
+ 'user_id': '1263406744',
+ 'user_profile_url': 'https://weibo.com/u/1263406744',
+ 'weibo_url': 'https://weibo.com/1263406744/MvJshboSM'}
+2023-04-08 16:44:58 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=23> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=22)
+2023-04-08 16:44:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MzZo72hqF> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=8)
+2023-04-08 16:44:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=24> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=23)
+2023-04-08 16:45:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=3912664953> (referer: https://weibo.com/ajax/statuses/show?id=MxzjDBOQl)
+2023-04-08 16:45:00 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=3912664953>
+{'attitudes_count': 5,
+ 'comments_count': 1,
+ 'created_at': '2023-03-16 19:51:56',
+ 'keyword': '联想计划性报废',
+ 'mblog_id': 'MxzjDBOQl',
+ 'mid': '4880005819013581',
+ 'region_name': '陕西',
+ 'reposts_count': 1,
+ 'source': 'iPhone 13 Pro',
+ 'task_code': 'test_task_code',
+ 'text': '<a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%E7%AC%94%E8%AE%B0%E6%9C%AC%E8%A2%AB%E8%B4%A8%E7%96%91%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F%23" '
+         'target="_blank">#联想小新笔记本被质疑计划性报废#</a><br />头条热榜<br '
+         '/>计划性报废这个事情在硬件界一直提示存在，早些年苹果也会通过电池等来控制产品的生命周期，而行业最恶劣的做法则是在保质期刚刚结束之后就计划性报废，这样的产品笔者其实也遇到过。<br '
+         '/><br />而目前联想小新笔记本被用户质疑计划性报废，维权人群已经达到900人次 \u200b\u200b\u200b '
+         '...<span class="expand">展开</span>',
+ 'text_length': 955,
+ 'text_raw': '#联想小新笔记本被质疑计划性报废#\n'
+             '头条热榜\n'
+             '计划性报废这个事情在硬件界一直提示存在，早些年苹果也会通过电池等来控制产品的生命周期，而行业最恶劣的做法则是在保质期刚刚结束之后就计划性报废，这样的产品笔者其实也遇到过。\n'
+             '\n'
+             '而目前联想小新笔记本被用户质疑计划性报废，维权人群已经达到900人次 \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax4.sinaimg.cn/crop.0.0.1010.1010.1024/e9368779ly8fxqecdiq8lj20s20s23za.jpg?KID=imgbed,tva&Expires=1680954300&ssig=amnZ9CSyvf',
+          'avatar_large_url': 'https://tvax4.sinaimg.cn/crop.0.0.1010.1010.180/e9368779ly8fxqecdiq8lj20s20s23za.jpg?KID=imgbed,tva&Expires=1680954300&ssig=Su8bY9uk%2BJ',
+          'description': '我一说，你就那么一听好吧？',
+          'followers_count': 162367,
+          'followers_count_str': '16.2万',
+          'friends_count': 300,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 3912664953,
+          'id_str': '3912664953',
+          'location': '海外',
+          'profile_image_url': 'https://tvax4.sinaimg.cn/crop.0.0.1010.1010.50/e9368779ly8fxqecdiq8lj20s20s23za.jpg?KID=imgbed,tva&Expires=1680954300&ssig=BhEdEShvIB',
+          'profile_url': 'https://weibo.com/u/3912664953',
+          'screen_name': '互联网的放大镜',
+          'statuses_count': 2869,
+          'statuses_count_str': ''},
+ 'user_id': '3912664953',
+ 'user_profile_url': 'https://weibo.com/u/3912664953',
+ 'weibo_url': 'https://weibo.com/3912664953/MxzjDBOQl'}
+2023-04-08 16:45:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=25> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=24)
+2023-04-08 16:45:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=5161369513> (referer: https://weibo.com/ajax/statuses/show?id=MxGfUmCTh)
+2023-04-08 16:45:01 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=5161369513>
+{'attitudes_count': 3,
+ 'comments_count': 4,
+ 'created_at': '2023-03-17 13:31:57',
+ 'keyword': '联想计划性报废',
+ 'mblog_id': 'MxGfUmCTh',
+ 'mid': '4880272585392715',
+ 'region_name': '广东',
+ 'reposts_count': 0,
+ 'source': '<a target="_blank" target="_blank" target="_blank" target="_blank" '
+           'target="_blank" href="https://app.weibo.com/t/feed/1Ygmhv" '
+           'rel="nofollow">Xiaomi 13</a>',
+ 'task_code': 'test_task_code',
+ 'text': '<a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%E7%AC%94%E8%AE%B0%E6%9C%AC%E8%A2%AB%E8%B4%A8%E7%96%91%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F%23" '
+         'target="_blank">#联想小新笔记本被质疑计划性报废#</a>刚过保3个月，平时多数用来看视频，风扇也能呼啦呼啦响还会卡住，正常使用中就花屏了，现在都不能正常开机<a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E7%AC%94%E8%AE%B0%E6%9C%AC%23" '
+         'target="_blank">#联想笔记本#</a><a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%E7%AC%94%E8%AE%B0%E6%9C%AC%E8%AE%A1%E5%88%92%E6%80%A7%E6%8A%A5%E5%BA%9F%23" '
+         'target="_blank">#联想小新笔记本计划性报废#</a><a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E7%AC%94%E8%AE%B0%E6%9C%AC%E8%A2%AB%E7%88%86%E5%9B%A0%E4%BD%8E%E6%B8%A9%E7%84%8A%E6%8E%A5%E6%8A%80%E6%9C%AF%E9%BB%91%E5%B1%8F%E6%AD%BB%E6%9C%BA%23" '
+         'target="_blank">#联想笔记本被爆因低温焊接技术黑屏死机#</a><a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E7%AC%94%E8%AE%B0%E6%9C%AC%23" '
+         'target="_blank">#联想笔记本#</a> 麻了上网一查发现不是个例，去售后检查，看下电脑开机没反应直接 '
+         '\u200b\u200b\u200b ...<span class="expand">展开</span>',
+ 'text_length': 369,
+ 'text_raw': '#联想小新笔记本被质疑计划性报废#刚过保3个月，平时多数用来看视频，风扇也能呼啦呼啦响还会卡住，正常使用中就花屏了，现在都不能正常开机#联想笔记本##联想小新笔记本计划性报废##联想笔记本被爆因低温焊接技术黑屏死机##联想笔记本# '
+             '麻了上网一查发现不是个例，去售后检查，看下电脑开机没反应直接 \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax2.sinaimg.cn/crop.0.0.1002.1002.1024/005DizZnly8gshjgcmyi4j30ru0ruwgk.jpg?KID=imgbed,tva&Expires=1680954301&ssig=574p%2FHxZmL',
+          'avatar_large_url': 'https://tvax2.sinaimg.cn/crop.0.0.1002.1002.180/005DizZnly8gshjgcmyi4j30ru0ruwgk.jpg?KID=imgbed,tva&Expires=1680954301&ssig=S%2FXh227%2BiT',
+          'description': '有一分热，发一分光。',
+          'followers_count': 27,
+          'followers_count_str': '27',
+          'friends_count': 161,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 5161369513,
+          'id_str': '5161369513',
+          'location': '广东 江门',
+          'profile_image_url': 'https://tvax2.sinaimg.cn/crop.0.0.1002.1002.50/005DizZnly8gshjgcmyi4j30ru0ruwgk.jpg?KID=imgbed,tva&Expires=1680954301&ssig=CnnSuKxihA',
+          'profile_url': 'https://weibo.com/u/5161369513',
+          'screen_name': '你看看我像妖吗',
+          'statuses_count': 178,
+          'statuses_count_str': ''},
+ 'user_id': '5161369513',
+ 'user_profile_url': 'https://weibo.com/u/5161369513',
+ 'weibo_url': 'https://weibo.com/5161369513/MxGfUmCTh'}
+2023-04-08 16:45:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=26> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=25)
+2023-04-08 16:45:02 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MzDvTamJO> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=11)
+2023-04-08 16:45:02 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=27> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=26)
+2023-04-08 16:45:03 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MzDLcAer9> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=11)
+2023-04-08 16:45:04 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=28> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=27)
+2023-04-08 16:45:04 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=Mzvaei9cT> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=12)
+2023-04-08 16:45:05 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=29> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=28)
+2023-04-08 16:45:05 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MzuILmT2X> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=13)
+2023-04-08 16:45:06 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=30> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=29)
+2023-04-08 16:45:07 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MzqdObLwm> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=14)
+2023-04-08 16:45:08 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=31> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=30)
+2023-04-08 16:45:08 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MzmV30yLO> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=15)
+2023-04-08 16:45:09 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MzcN98YhM> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=16)
+2023-04-08 16:45:09 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=32> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=31)
+2023-04-08 16:45:10 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=Mzbrj6JiI> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=17)
+2023-04-08 16:45:10 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=33> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=32)
+2023-04-08 16:45:12 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=Mz1toBa4f> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=18)
+2023-04-08 16:45:12 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=34> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=33)
+2023-04-08 16:45:13 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MyNPj66y4> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=19)
+2023-04-08 16:45:13 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=35> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=34)
+2023-04-08 16:45:14 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=1148243862> (referer: https://weibo.com/ajax/statuses/show?id=MAhQK5lzN)
+2023-04-08 16:45:14 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=1148243862>
+{'attitudes_count': 0,
+ 'comments_count': 0,
+ 'created_at': '2023-04-03 16:54:57',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MAhQK5lzN',
+ 'mid': '4886484261274583',
+ 'region_name': '山东',
+ 'reposts_count': 0,
+ 'source': 'HarmonyOS设备',
+ 'task_code': 'test_task_code',
+ 'text': '今天下雨，笔记本罢工，心情不好，最近几天用着用着画面就卡住了，按鼠标点击图标没有任何反应，只能强制性重启，线上客服说的方法都试了，问题再现，蓝牙鼠标也连接时好时坏，太耽误事了，现在恢复系统中<a '
+         'href=/n/联想中国 usercard="name=@联想中国">@联想中国</a> <a href=/n/联想小新 '
+         'usercard="name=@联想小新">@联想小新</a> \u200b\u200b\u200b',
+ 'text_length': 209,
+ 'text_raw': '今天下雨，笔记本罢工，心情不好，最近几天用着用着画面就卡住了，按鼠标点击图标没有任何反应，只能强制性重启，线上客服说的方法都试了，问题再现，蓝牙鼠标也连接时好时坏，太耽误事了，现在恢复系统中@联想中国 '
+             '@联想小新 \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax3.sinaimg.cn/crop.0.0.1080.1080.1024/4470cf96ly8h4c89fvf6mj20u00u0771.jpg?KID=imgbed,tva&Expires=1680954314&ssig=fF2BhD4Q5q',
+          'avatar_large_url': 'https://tvax3.sinaimg.cn/crop.0.0.1080.1080.180/4470cf96ly8h4c89fvf6mj20u00u0771.jpg?KID=imgbed,tva&Expires=1680954314&ssig=qR%2F0mFB7W4',
+          'description': '沟通、见解、拥抱时代',
+          'followers_count': 221850,
+          'followers_count_str': '22.2万',
+          'friends_count': 851,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 1148243862,
+          'id_str': '1148243862',
+          'location': '山东',
+          'profile_image_url': 'https://tvax3.sinaimg.cn/crop.0.0.1080.1080.50/4470cf96ly8h4c89fvf6mj20u00u0771.jpg?KID=imgbed,tva&Expires=1680954314&ssig=%2BSj21mv7mF',
+          'profile_url': 'https://weibo.com/u/1148243862',
+          'screen_name': '邱阿浩',
+          'statuses_count': 12983,
+          'statuses_count_str': ''},
+ 'user_id': '1148243862',
+ 'user_profile_url': 'https://weibo.com/u/1148243862',
+ 'weibo_url': 'https://weibo.com/1148243862/MAhQK5lzN'}
+2023-04-08 16:45:14 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=36> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=35)
+2023-04-08 16:45:15 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=2911650782> (referer: https://weibo.com/ajax/statuses/show?id=MsbNgCu0t)
+2023-04-08 16:45:15 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=2911650782>
+{'attitudes_count': 0,
+ 'comments_count': 0,
+ 'created_at': '2023-02-09 10:47:29',
+ 'keyword': '联想计划性报废',
+ 'mblog_id': 'MsbNgCu0t',
+ 'mid': '4867185229171813',
+ 'region_name': '广东',
+ 'reposts_count': 0,
+ 'source': '微博轻享版',
+ 'task_code': 'test_task_code',
+ 'text': '有点意思，不知真假...只知道精准售后可能是真的，再买联想的笔记本，保内一定得弄延保...<img alt="[吃瓜]" '
+         'title="[吃瓜]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/01/2018new_chigua_org.png" '
+         '/><br />买了19款首发拯救者的骂骂咧咧路过。<br /><br />联想的计划性报废计划?估计中招的机主不计其数了 UP主: '
+         '笔记本维修厮  \u200b\u200b\u200b',
+ 'text_length': 212,
+ 'text_raw': '有点意思，不知真假...只知道精准售后可能是真的，再买联想的笔记本，保内一定得弄延保...[吃瓜]\n'
+             '买了19款首发拯救者的骂骂咧咧路过。\n'
+             '\n'
+             '联想的计划性报废计划?估计中招的机主不计其数了 UP主: 笔记本维修厮 http://t.cn/A69kI0wm '
+             '\u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax4.sinaimg.cn/crop.0.0.998.998.1024/ad8c43dely8hbvxdigmlwj20rq0rqadb.jpg?KID=imgbed,tva&Expires=1680954315&ssig=1D8tGmZ6C2',
+          'avatar_large_url': 'https://tvax4.sinaimg.cn/crop.0.0.998.998.180/ad8c43dely8hbvxdigmlwj20rq0rqadb.jpg?KID=imgbed,tva&Expires=1680954315&ssig=KTKFokmvbx',
+          'description': '不吃不等死。',
+          'followers_count': 9,
+          'followers_count_str': '9',
+          'friends_count': 135,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 2911650782,
+          'id_str': '2911650782',
+          'location': '其他',
+          'profile_image_url': 'https://tvax4.sinaimg.cn/crop.0.0.998.998.50/ad8c43dely8hbvxdigmlwj20rq0rqadb.jpg?KID=imgbed,tva&Expires=1680954315&ssig=XjuwutnHh8',
+          'profile_url': 'https://weibo.com/u/2911650782',
+          'screen_name': '月面兔兵器米娜',
+          'statuses_count': 6226,
+          'statuses_count_str': ''},
+ 'user_id': '2911650782',
+ 'user_profile_url': 'https://weibo.com/u/2911650782',
+ 'weibo_url': 'https://weibo.com/2911650782/MsbNgCu0t'}
+2023-04-08 16:45:16 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=37> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=36)
+2023-04-08 16:45:16 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MysCf8zXd> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=22)
+2023-04-08 16:45:17 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=38> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=37)
+2023-04-08 16:45:17 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=5863091313> (referer: https://weibo.com/ajax/statuses/show?id=MzZo72hqF)
+2023-04-08 16:45:18 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=5863091313>
+{'attitudes_count': 2,
+ 'comments_count': 0,
+ 'created_at': '2023-04-01 17:54:58',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MzZo72hqF',
+ 'mid': '4885774590543657',
+ 'region_name': '河南',
+ 'reposts_count': 0,
+ 'source': 'iPhone客户端',
+ 'task_code': 'test_task_code',
+ 'text': '这辈子不会再买任何联想的产品<br />联想小新从拿到手到现在，已经无数次连不上网了<br '
+         '/>用过最垃圾的电脑，就这破烂联想不知道怎么同意上市的<a '
+         'href="//s.weibo.com/weibo?q=%23%E5%9E%83%E5%9C%BE%E8%81%94%E6%83%B3%23" '
+         'target="_blank">#垃圾联想#</a><a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E7%94%B5%E8%84%91%23" '
+         'target="_blank">#联想电脑#</a><a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%23" '
+         'target="_blank">#联想小新#</a> \u200b\u200b\u200b',
+ 'text_length': 154,
+ 'text_raw': '这辈子不会再买任何联想的产品\n'
+             '联想小新从拿到手到现在，已经无数次连不上网了\n'
+             '用过最垃圾的电脑，就这破烂联想不知道怎么同意上市的#垃圾联想##联想电脑##联想小新# \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax3.sinaimg.cn/crop.0.0.498.498.1024/006oMVSVly8h21eqs12foj30du0duglu.jpg?KID=imgbed,tva&Expires=1680954317&ssig=eugFJv1%2BZh',
+          'avatar_large_url': 'https://tvax3.sinaimg.cn/crop.0.0.498.498.180/006oMVSVly8h21eqs12foj30du0duglu.jpg?KID=imgbed,tva&Expires=1680954317&ssig=ktTcvppuGJ',
+          'description': '他是我的月 是这世间所有美好的集合',
+          'followers_count': 49,
+          'followers_count_str': '49',
+          'friends_count': 98,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 5863091313,
+          'id_str': '5863091313',
+          'location': '河南',
+          'profile_image_url': 'https://tvax3.sinaimg.cn/crop.0.0.498.498.50/006oMVSVly8h21eqs12foj30du0duglu.jpg?KID=imgbed,tva&Expires=1680954317&ssig=ls27wJEdCH',
+          'profile_url': 'https://weibo.com/u/5863091313',
+          'screen_name': '可乐月亮-',
+          'statuses_count': 11,
+          'statuses_count_str': ''},
+ 'user_id': '5863091313',
+ 'user_profile_url': 'https://weibo.com/u/5863091313',
+ 'weibo_url': 'https://weibo.com/5863091313/MzZo72hqF'}
+2023-04-08 16:45:18 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=39> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=38)
+2023-04-08 16:45:19 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MyhbLhiad> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=24)
+2023-04-08 16:45:19 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=40> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=39)
+2023-04-08 16:45:20 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=My4146f2h> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=25)
+2023-04-08 16:45:20 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=41> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=40)
+2023-04-08 16:45:21 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=5081528862> (referer: https://weibo.com/ajax/statuses/show?id=MzDvTamJO)
+2023-04-08 16:45:21 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=5081528862>
+{'attitudes_count': 18,
+ 'comments_count': 13,
+ 'created_at': '2023-03-30 10:13:42',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MzDvTamJO',
+ 'mid': '4884933732470688',
+ 'region_name': '广东',
+ 'reposts_count': 6,
+ 'source': '微博网页版',
+ 'task_code': 'test_task_code',
+ 'text': '轻松一刻，小新相伴，随时随地尽享惬意时光。一杯咖啡，一首歌曲，一本书，联想小新带给你全新的休闲体验。放松身心，释放压力，让小新陪你走过每一个舒适的时刻。 '
+         '\u200b\u200b\u200b',
+ 'text_length': 152,
+ 'text_raw': '轻松一刻，小新相伴，随时随地尽享惬意时光。一杯咖啡，一首歌曲，一本书，联想小新带给你全新的休闲体验。放松身心，释放压力，让小新陪你走过每一个舒适的时刻。 '
+             '\u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax1.sinaimg.cn/crop.0.0.750.750.1024/005xTzMWly8g2zngb5ubsj30ku0kujta.jpg?KID=imgbed,tva&Expires=1680954321&ssig=r%2Btyb4JJBp',
+          'avatar_large_url': 'https://tvax1.sinaimg.cn/crop.0.0.750.750.180/005xTzMWly8g2zngb5ubsj30ku0kujta.jpg?KID=imgbed,tva&Expires=1680954321&ssig=PqS03nBVf%2B',
+          'description': '欢迎关注！',
+          'followers_count': 197161,
+          'followers_count_str': '19.7万',
+          'friends_count': 120,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 5081528862,
+          'id_str': '5081528862',
+          'location': '浙江 宁波',
+          'profile_image_url': 'https://tvax1.sinaimg.cn/crop.0.0.750.750.50/005xTzMWly8g2zngb5ubsj30ku0kujta.jpg?KID=imgbed,tva&Expires=1680954321&ssig=t4JsOCAYtn',
+          'profile_url': 'https://weibo.com/u/5081528862',
+          'screen_name': '老高科技说',
+          'statuses_count': 4975,
+          'statuses_count_str': ''},
+ 'user_id': '5081528862',
+ 'user_profile_url': 'https://weibo.com/u/5081528862',
+ 'weibo_url': 'https://weibo.com/5081528862/MzDvTamJO'}
+2023-04-08 16:45:22 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=42> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=41)
+2023-04-08 16:45:22 [scrapy.extensions.logstats] INFO: Crawled 96 pages (at 96 pages/min), scraped 17 items (at 17 items/min)
+2023-04-08 16:45:22 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=5659357838> (referer: https://weibo.com/ajax/statuses/show?id=MzDLcAer9)
+2023-04-08 16:45:22 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=5659357838>
+{'attitudes_count': 7,
+ 'comments_count': 5,
+ 'created_at': '2023-03-30 10:51:26',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MzDLcAer9',
+ 'mid': '4884943228635307',
+ 'region_name': '山东',
+ 'reposts_count': 0,
+ 'source': '<a target="_blank" target="_blank" target="_blank" '
+           'href="https://app.weibo.com/t/feed/1EuKP9" rel="nofollow">HUAWEI '
+           'Mate 30 5G</a>',
+ 'task_code': 'test_task_code',
+ 'text': '<a '
+         'href="//s.weibo.com/weibo?q=%23%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%8E%A8%E8%8D%90%23" '
+         'target="_blank">#笔记本电脑推荐#</a>统计硕士，用matlab，R，SPSS，Eprime，Python跑大数据。现在考虑的是thinkbook '
+         '16+ i5-13500H 32内存 定制1T的固态吗，可以吗？还是选联想小新Pro呢？谢谢！<img alt="[可怜]" '
+         'title="[可怜]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/96/2018new_kelian_org.png" '
+         '/><img alt="[可怜]" title="[可怜]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/96/2018new_kelian_org.png" '
+         '/> \u200b\u200b\u200b',
+ 'text_length': 175,
+ 'text_raw': '#笔记本电脑推荐#统计硕士，用matlab，R，SPSS，Eprime，Python跑大数据。现在考虑的是thinkbook '
+             '16+ i5-13500H 32内存 定制1T的固态吗，可以吗？还是选联想小新Pro呢？谢谢！[可怜][可怜] '
+             '\u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax1.sinaimg.cn/crop.0.0.960.960.1024/006b05v8ly8hcd2x5oku0j30qo0qo0ud.jpg?KID=imgbed,tva&Expires=1680954322&ssig=y%2FFzcv9eWV',
+          'avatar_large_url': 'https://tvax1.sinaimg.cn/crop.0.0.960.960.180/006b05v8ly8hcd2x5oku0j30qo0qo0ud.jpg?KID=imgbed,tva&Expires=1680954322&ssig=iXb%2BbWt6tL',
+          'description': '哈哈hhhhhh',
+          'followers_count': 51,
+          'followers_count_str': '51',
+          'friends_count': 592,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 5659357838,
+          'id_str': '5659357838',
+          'location': '山东',
+          'profile_image_url': 'https://tvax1.sinaimg.cn/crop.0.0.960.960.50/006b05v8ly8hcd2x5oku0j30qo0qo0ud.jpg?KID=imgbed,tva&Expires=1680954322&ssig=ZnCjBsj%2FQ%2B',
+          'profile_url': 'https://weibo.com/u/5659357838',
+          'screen_name': 'better-better-bettery',
+          'statuses_count': 451,
+          'statuses_count_str': ''},
+ 'user_id': '5659357838',
+ 'user_profile_url': 'https://weibo.com/u/5659357838',
+ 'weibo_url': 'https://weibo.com/5659357838/MzDLcAer9'}
+2023-04-08 16:45:23 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=43> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=42)
+2023-04-08 16:45:24 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=5417294553> (referer: https://weibo.com/ajax/statuses/show?id=Mzvaei9cT)
+2023-04-08 16:45:24 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=5417294553>
+{'attitudes_count': 0,
+ 'comments_count': 1,
+ 'created_at': '2023-03-29 12:58:22',
+ 'keyword': '联想小新',
+ 'mblog_id': 'Mzvaei9cT',
+ 'mid': '4884612784325299',
+ 'region_name': '陕西',
+ 'reposts_count': 0,
+ 'source': '<a target="_blank" target="_blank" target="_blank" target="_blank" '
+           'href="https://app.weibo.com/t/feed/1qbOe6" rel="nofollow">荣耀20 '
+           'PRO</a>',
+ 'task_code': 'test_task_code',
+ 'text': '<a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%5B%E8%B6%85%E8%AF%9D%5D%23" '
+         'target="_blank"><a target="_blank" '
+         'href="https://weibo.com/p/1008085b1698b02d1feec7eb940b921abcb34f"><img '
+         'class="icon-link" '
+         'src="https://h5.sinaimg.cn/upload/100/959/2020/05/09/timeline_card_small_super_default.png"/>联想小新超话</a></a>开机时候一直在锁屏壁纸界面转啊转怎么办<img '
+         'alt="[苦涩]" title="[苦涩]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/7e/2021_bitter_org.png" '
+         '/>鼠标也卡顿<img alt="[泪]" title="[泪]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/6e/2018new_leimu_org.png" '
+         '/>点了系统更新，一直在重启界面加载<img alt="[泪]" title="[泪]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/6e/2018new_leimu_org.png" '
+         '/><img alt="[泪]" title="[泪]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/6e/2018new_leimu_org.png" '
+         '/><img alt="[泪]" title="[泪]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/6e/2018new_leimu_org.png" '
+         '/> \u200b\u200b\u200b',
+ 'text_length': 118,
+ 'text_raw': '#联想小新[超话]#开机时候一直在锁屏壁纸界面转啊转怎么办[苦涩]鼠标也卡顿[泪]点了系统更新，一直在重启界面加载[泪][泪][泪] '
+             '\u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax4.sinaimg.cn/crop.0.0.996.996.1024/005UCpMBly8gwdm8t62lhj30ro0rowif.jpg?KID=imgbed,tva&Expires=1680954324&ssig=BihaDuun2u',
+          'avatar_large_url': 'https://tvax4.sinaimg.cn/crop.0.0.996.996.180/005UCpMBly8gwdm8t62lhj30ro0rowif.jpg?KID=imgbed,tva&Expires=1680954324&ssig=B8FXbngOTY',
+          'description': '谁砍我的树，我砍谁的头',
+          'followers_count': 62,
+          'followers_count_str': '62',
+          'friends_count': 650,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 5417294553,
+          'id_str': '5417294553',
+          'location': '其他',
+          'profile_image_url': 'https://tvax4.sinaimg.cn/crop.0.0.996.996.50/005UCpMBly8gwdm8t62lhj30ro0rowif.jpg?KID=imgbed,tva&Expires=1680954324&ssig=I8xffMmFRX',
+          'profile_url': 'https://weibo.com/u/5417294553',
+          'screen_name': '正版种树二狗',
+          'statuses_count': 7075,
+          'statuses_count_str': ''},
+ 'user_id': '5417294553',
+ 'user_profile_url': 'https://weibo.com/u/5417294553',
+ 'weibo_url': 'https://weibo.com/5417294553/Mzvaei9cT'}
+2023-04-08 16:45:24 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=44> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=43)
+2023-04-08 16:45:25 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=2128913684> (referer: https://weibo.com/ajax/statuses/show?id=MzuILmT2X)
+2023-04-08 16:45:25 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=2128913684>
+{'attitudes_count': 112,
+ 'comments_count': 138,
+ 'created_at': '2023-03-29 11:50:42',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MzuILmT2X',
+ 'mid': '4884595755454819',
+ 'region_name': '湖南',
+ 'reposts_count': 113,
+ 'source': '<a target="_blank" target="_blank" target="_blank" '
+           'href="https://t.sina.com.cn" rel="nofollow">微博视频号</a>',
+ 'task_code': 'test_task_code',
+ 'text': '联想小新宠物智能一体机A7 Pro，<br />专为萌宠打造，<br />智能喂食计划，<br />多重精滤  净水污水分离，<br '
+         '/>守护毛孩子的健康成长~ <a target="_blank" '
+         'href="https://video.weibo.com/show?fid=1034:4884595628507219"><img '
+         'class="icon-link" '
+         'src="https://h5.sinaimg.cn/upload/2015/09/25/3/timeline_card_small_video_default.png"/>爱生活丶爱旅行的微博视频</a> '
+         '\u200b\u200b\u200b',
+ 'text_length': 128,
+ 'text_raw': '联想小新宠物智能一体机A7 Pro，\n'
+             '专为萌宠打造，\n'
+             '智能喂食计划，\n'
+             '多重精滤  净水污水分离，\n'
+             '守护毛孩子的健康成长~ http://t.cn/A6CF6D10 \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tva4.sinaimg.cn/crop.0.0.552.552.1024/7ee4a514tw1e9dvlucpobj20fg0fswgf.jpg?KID=imgbed,tva&Expires=1680954325&ssig=auhGFx0OER',
+          'avatar_large_url': 'https://tva4.sinaimg.cn/crop.0.0.552.552.180/7ee4a514tw1e9dvlucpobj20fg0fswgf.jpg?KID=imgbed,tva&Expires=1680954325&ssig=TZjL7wmcTO',
+          'description': '介绍日常实用的生活小知识、小百科、小窍门。敬请关注！',
+          'followers_count': 1070347,
+          'followers_count_str': '107万',
+          'friends_count': 139,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 2128913684,
+          'id_str': '2128913684',
+          'location': '广东',
+          'profile_image_url': 'https://tva4.sinaimg.cn/crop.0.0.552.552.50/7ee4a514tw1e9dvlucpobj20fg0fswgf.jpg?KID=imgbed,tva&Expires=1680954325&ssig=GUy5wUqqI3',
+          'profile_url': 'https://weibo.com/u/2128913684',
+          'screen_name': '爱生活丶爱旅行',
+          'statuses_count': 6950,
+          'statuses_count_str': ''},
+ 'user_id': '2128913684',
+ 'user_profile_url': 'https://weibo.com/u/2128913684',
+ 'weibo_url': 'https://weibo.com/2128913684/MzuILmT2X'}
+2023-04-08 16:45:25 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=45> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=44)
+2023-04-08 16:45:26 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=1715518577> (referer: https://weibo.com/ajax/statuses/show?id=MzqdObLwm)
+2023-04-08 16:45:27 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=1715518577>
+{'attitudes_count': 14,
+ 'comments_count': 11,
+ 'created_at': '2023-03-29 00:23:27',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MzqdObLwm',
+ 'mid': '4884422802804282',
+ 'region_name': '北京',
+ 'reposts_count': 0,
+ 'source': '微博网页版',
+ 'task_code': 'test_task_code',
+ 'text': '国内这款叫做小新Air14 2023，锐龙Zen4，值得期待，往前面翻，其实有数据，DDDD，话不多说，点到为止。<a '
+         'href="//s.weibo.com/weibo?q=%23%E4%B9%B0%E7%94%B5%E8%84%91%E9%80%89%E5%B0%8F%E6%96%B0%23" '
+         'target="_blank">#买电脑选小新#</a><a '
+         'href="//s.weibo.com/weibo?q=%23%E9%80%89%E5%B0%8F%E6%96%B0%E5%A4%A7%E6%BB%A1%E8%B6%B3%23" '
+         'target="_blank">#选小新大满足#</a> <br />联想发布 Yoga Slim 6 轻薄本：搭载 R7 '
+         '7840U，RDNA3 核显 - IT之家<br /> \u200b\u200b\u200b',
+ 'text_length': 210,
+ 'text_raw': '国内这款叫做小新Air14 '
+             '2023，锐龙Zen4，值得期待，往前面翻，其实有数据，DDDD，话不多说，点到为止。#买电脑选小新##选小新大满足# \n'
+             '联想发布 Yoga Slim 6 轻薄本：搭载 R7 7840U，RDNA3 核显 - IT之家\n'
+             'http://t.cn/A6Cke7Nl \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tva4.sinaimg.cn/crop.0.0.180.180.1024/6640bc71jw1e8qgp5bmzyj2050050aa8.jpg?KID=imgbed,tva&Expires=1680954326&ssig=6OH%2BI5lDAV',
+          'avatar_large_url': 'https://tva4.sinaimg.cn/crop.0.0.180.180.180/6640bc71jw1e8qgp5bmzyj2050050aa8.jpg?KID=imgbed,tva&Expires=1680954326&ssig=OpIhTpxTKi',
+          'description': '完美主义者，爱数码、爱生活',
+          'followers_count': 55300,
+          'followers_count_str': '5.5万',
+          'friends_count': 1716,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 1715518577,
+          'id_str': '1715518577',
+          'location': '北京 朝阳区',
+          'profile_image_url': 'https://tva4.sinaimg.cn/crop.0.0.180.180.50/6640bc71jw1e8qgp5bmzyj2050050aa8.jpg?KID=imgbed,tva&Expires=1680954326&ssig=Y7eR3k%2BqpV',
+          'profile_url': 'https://weibo.com/u/1715518577',
+          'screen_name': '果壳中的空间',
+          'statuses_count': 7486,
+          'statuses_count_str': ''},
+ 'user_id': '1715518577',
+ 'user_profile_url': 'https://weibo.com/u/1715518577',
+ 'weibo_url': 'https://weibo.com/1715518577/MzqdObLwm'}
+2023-04-08 16:45:27 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=46> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=45)
+2023-04-08 16:45:28 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=1831273377> (referer: https://weibo.com/ajax/statuses/show?id=MzmV30yLO)
+2023-04-08 16:45:28 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=1831273377>
+{'attitudes_count': 25,
+ 'comments_count': 21,
+ 'created_at': '2023-03-28 15:58:59',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MzmV30yLO',
+ 'mid': '4884295850133660',
+ 'region_name': '福建',
+ 'reposts_count': 10,
+ 'source': '微博网页版',
+ 'task_code': 'test_task_code',
+ 'text': '联想小新pro16高能亮相，强悍性能直接拉满，工作游戏娱乐都不再话下，真正的轻薄全能水桶机！性能更Pro！ '
+         '\u200b\u200b\u200b',
+ 'text_length': 98,
+ 'text_raw': '联想小新pro16高能亮相，强悍性能直接拉满，工作游戏娱乐都不再话下，真正的轻薄全能水桶机！性能更Pro！ '
+             '\u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tva3.sinaimg.cn/crop.76.0.288.288.1024/6d2703a1jw8eb7x9u0ljkj20c80803yn.jpg?KID=imgbed,tva&Expires=1680954327&ssig=HaQ%2BdpXJ69',
+          'avatar_large_url': 'https://tva3.sinaimg.cn/crop.76.0.288.288.180/6d2703a1jw8eb7x9u0ljkj20c80803yn.jpg?KID=imgbed,tva&Expires=1680954327&ssig=QmCMMlraI%2B',
+          'description': '',
+          'followers_count': 99976,
+          'followers_count_str': '10万',
+          'friends_count': 147,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 1831273377,
+          'id_str': '1831273377',
+          'location': '河南 周口',
+          'profile_image_url': 'https://tva3.sinaimg.cn/crop.76.0.288.288.50/6d2703a1jw8eb7x9u0ljkj20c80803yn.jpg?KID=imgbed,tva&Expires=1680954327&ssig=H2O7qZvHlL',
+          'profile_url': 'https://weibo.com/u/1831273377',
+          'screen_name': 'IT数码观察猿',
+          'statuses_count': 1060,
+          'statuses_count_str': ''},
+ 'user_id': '1831273377',
+ 'user_profile_url': 'https://weibo.com/u/1831273377',
+ 'weibo_url': 'https://weibo.com/1831273377/MzmV30yLO'}
+2023-04-08 16:45:28 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=47> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=46)
+2023-04-08 16:45:29 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MxybRonBs> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=31)
+2023-04-08 16:45:29 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=48> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=47)
+2023-04-08 16:45:31 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=6156561351> (referer: https://weibo.com/ajax/statuses/show?id=Mzbrj6JiI)
+2023-04-08 16:45:31 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=6156561351>
+{'attitudes_count': 1,
+ 'comments_count': 1,
+ 'created_at': '2023-03-27 10:45:30',
+ 'keyword': '联想小新',
+ 'mblog_id': 'Mzbrj6JiI',
+ 'mid': '4883854571604108',
+ 'region_name': '北京',
+ 'reposts_count': 1,
+ 'source': '<a target="_blank" target="_blank" target="_blank" '
+           'href="https://app.weibo.com/t/feed/cmt5C" rel="nofollow">Note 9 '
+           'Pro 一亿像素</a>',
+ 'task_code': 'test_task_code',
+ 'text': '新的一天 继续辱骂联想小新<img alt="[太开心]" title="[太开心]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/1e/2018new_taikaixin_org.png" '
+         '/> \u200b\u200b\u200b',
+ 'text_length': 33,
+ 'text_raw': '新的一天 继续辱骂联想小新[太开心] \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax2.sinaimg.cn/crop.0.0.1080.1080.1024/006IEiQDly8hbly7hccxzj30u00u040g.jpg?KID=imgbed,tva&Expires=1680954330&ssig=PKZ4wRbQwa',
+          'avatar_large_url': 'https://tvax2.sinaimg.cn/crop.0.0.1080.1080.180/006IEiQDly8hbly7hccxzj30u00u040g.jpg?KID=imgbed,tva&Expires=1680954330&ssig=ugHNkhJq4y',
+          'description': '☀🌻☀',
+          'followers_count': 80,
+          'followers_count_str': '80',
+          'friends_count': 395,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 6156561351,
+          'id_str': '6156561351',
+          'location': '其他',
+          'profile_image_url': 'https://tvax2.sinaimg.cn/crop.0.0.1080.1080.50/006IEiQDly8hbly7hccxzj30u00u040g.jpg?KID=imgbed,tva&Expires=1680954330&ssig=YsPglzjQAM',
+          'profile_url': 'https://weibo.com/u/6156561351',
+          'screen_name': '大王606',
+          'statuses_count': 3888,
+          'statuses_count_str': ''},
+ 'user_id': '6156561351',
+ 'user_profile_url': 'https://weibo.com/u/6156561351',
+ 'weibo_url': 'https://weibo.com/6156561351/Mzbrj6JiI'}
+2023-04-08 16:45:31 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=49> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=48)
+2023-04-08 16:45:32 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=7389849471> (referer: https://weibo.com/ajax/statuses/show?id=Mz1toBa4f)
+2023-04-08 16:45:32 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=7389849471>
+{'attitudes_count': 0,
+ 'comments_count': 1,
+ 'created_at': '2023-03-26 09:23:11',
+ 'keyword': '联想小新',
+ 'mblog_id': 'Mz1toBa4f',
+ 'mid': '4883471468856839',
+ 'region_name': '辽宁',
+ 'reposts_count': 0,
+ 'source': '<a target="_blank" target="_blank" target="_blank" target="_blank" '
+           'target="_blank" href="https://app.weibo.com/t/feed/1vvans" '
+           'rel="nofollow">vivo Y50 闪充强续航</a>',
+ 'task_code': 'test_task_code',
+ 'text': '<a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%5B%E8%B6%85%E8%AF%9D%5D%23" '
+         'target="_blank"><a target="_blank" '
+         'href="https://weibo.com/p/1008085b1698b02d1feec7eb940b921abcb34f"><img '
+         'class="icon-link" '
+         'src="https://h5.sinaimg.cn/upload/100/959/2020/05/09/timeline_card_small_super_default.png"/>联想小新超话</a></a>我只想问Pro16酷睿版能玩原神吗 '
+         '\u200b\u200b\u200b',
+ 'text_length': 45,
+ 'text_raw': '#联想小新[超话]#我只想问Pro16酷睿版能玩原神吗 \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax4.sinaimg.cn/crop.0.0.960.960.1024/008473qvly8hclnatqw9uj30qo0qodi9.jpg?KID=imgbed,tva&Expires=1680954332&ssig=UuqXpyF%2Fq0',
+          'avatar_large_url': 'https://tvax4.sinaimg.cn/crop.0.0.960.960.180/008473qvly8hclnatqw9uj30qo0qodi9.jpg?KID=imgbed,tva&Expires=1680954332&ssig=Hff6hTBItM',
+          'description': '听凭风引',
+          'followers_count': 1401,
+          'followers_count_str': '1401',
+          'friends_count': 295,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 7389849471,
+          'id_str': '7389849471',
+          'location': '辽宁',
+          'profile_image_url': 'https://tvax4.sinaimg.cn/crop.0.0.960.960.50/008473qvly8hclnatqw9uj30qo0qodi9.jpg?KID=imgbed,tva&Expires=1680954332&ssig=%2BgT%2BOphFNI',
+          'profile_url': 'https://weibo.com/u/7389849471',
+          'screen_name': '-涂鸦森林-',
+          'statuses_count': 735,
+          'statuses_count_str': ''},
+ 'user_id': '7389849471',
+ 'user_profile_url': 'https://weibo.com/u/7389849471',
+ 'weibo_url': 'https://weibo.com/7389849471/Mz1toBa4f'}
+2023-04-08 16:45:32 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=50> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=49)
+2023-04-08 16:45:33 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=3855757739> (referer: https://weibo.com/ajax/statuses/show?id=MyNPj66y4)
+2023-04-08 16:45:34 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=3855757739>
+{'attitudes_count': 0,
+ 'comments_count': 0,
+ 'created_at': '2023-03-24 22:38:42',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MyNPj66y4',
+ 'mid': '4882946891455144',
+ 'region_name': '广东',
+ 'reposts_count': 0,
+ 'source': '<a target="_blank" target="_blank" target="_blank" target="_blank" '
+           'href="https://app.weibo.com/t/feed/6lxOmf" rel="nofollow">K30 '
+           '至尊纪念版</a>',
+ 'task_code': 'test_task_code',
+ 'text': '联想小新，右边裂成这样，维修需要多少钱<img alt="[苦涩]" title="[苦涩]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/7e/2021_bitter_org.png" '
+         '/><img alt="[苦涩]" title="[苦涩]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/7e/2021_bitter_org.png" '
+         '/> \u200b\u200b\u200b',
+ 'text_length': 50,
+ 'text_raw': '联想小新，右边裂成这样，维修需要多少钱[苦涩][苦涩] \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax1.sinaimg.cn/crop.0.0.664.664.1024/e5d231ably8fzd0uo8gsaj20ig0ig0u4.jpg?KID=imgbed,tva&Expires=1680954333&ssig=Q5Yhr4W5mq',
+          'avatar_large_url': 'https://tvax1.sinaimg.cn/crop.0.0.664.664.180/e5d231ably8fzd0uo8gsaj20ig0ig0u4.jpg?KID=imgbed,tva&Expires=1680954333&ssig=oOa5qVv0u5',
+          'description': '',
+          'followers_count': 45,
+          'followers_count_str': '45',
+          'friends_count': 411,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 3855757739,
+          'id_str': '3855757739',
+          'location': '广东 广州',
+          'profile_image_url': 'https://tvax1.sinaimg.cn/crop.0.0.664.664.50/e5d231ably8fzd0uo8gsaj20ig0ig0u4.jpg?KID=imgbed,tva&Expires=1680954333&ssig=AS%2FWGqSJGE',
+          'profile_url': 'https://weibo.com/u/3855757739',
+          'screen_name': 'Iloveholiday',
+          'statuses_count': 1095,
+          'statuses_count_str': ''},
+ 'user_id': '3855757739',
+ 'user_profile_url': 'https://weibo.com/u/3855757739',
+ 'weibo_url': 'https://weibo.com/3855757739/MyNPj66y4'}
+2023-04-08 16:45:34 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=51> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=50)
+2023-04-08 16:45:34 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MxdLIFrKB> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=35)
+2023-04-08 16:45:36 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=Mx7kd3lCW> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=36)
+2023-04-08 16:45:37 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=3743621915> (referer: https://weibo.com/ajax/statuses/show?id=MysCf8zXd)
+2023-04-08 16:45:37 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=3743621915>
+{'attitudes_count': 146,
+ 'comments_count': 84,
+ 'created_at': '2023-03-22 16:38:50',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MysCf8zXd',
+ 'mid': '4882131552044835',
+ 'region_name': '上海',
+ 'reposts_count': 29,
+ 'source': '<a target="_blank" target="_blank" target="_blank" '
+           'href="https://t.sina.com.cn" rel="nofollow">微博视频号</a>',
+ 'task_code': 'test_task_code',
+ 'text': '恰如其分！联想小新 Pro 14 2023锐龙版测评体验<br /><br />坦率地讲，联想小新Pro 14 '
+         '2023锐龙版这台笔记本我也主力使用一周多的时间了，如果用一个词来概括的话，我会说它恰如其分。<br '
+         '/>性能、屏幕、续航等众多方面都具有扎实的体验，或许轻薄本就应该是这个样子。在过去这段时间，他作为我日常办公、闲暇娱乐的主 '
+         '\u200b\u200b\u200b ...<span class="expand">展开</span>',
+ 'text_length': 343,
+ 'text_raw': '恰如其分！联想小新 Pro 14 2023锐龙版测评体验\n'
+             '\n'
+             '坦率地讲，联想小新Pro 14 2023锐龙版这台笔记本我也主力使用一周多的时间了，如果用一个词来概括的话，我会说它恰如其分。\n'
+             '性能、屏幕、续航等众多方面都具有扎实的体验，或许轻薄本就应该是这个样子。在过去这段时间，他作为我日常办公、闲暇娱乐的主 '
+             '\u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax3.sinaimg.cn/crop.0.0.828.828.1024/df23231bly8gdibh8s46oj20n00n0dgh.jpg?KID=imgbed,tva&Expires=1680954337&ssig=ul15Za1xpr',
+          'avatar_large_url': 'https://tvax3.sinaimg.cn/crop.0.0.828.828.180/df23231bly8gdibh8s46oj20n00n0dgh.jpg?KID=imgbed,tva&Expires=1680954337&ssig=Ja8rqIu79t',
+          'description': '分享有温度的数码生活  【工作事宜邮箱：nidedachuantongxue@163.com】',
+          'followers_count': 767876,
+          'followers_count_str': '76.8万',
+          'friends_count': 1149,
+          'friends_count_str': '',
+          'gender': '男',
+          'id': 3743621915,
+          'id_str': '3743621915',
+          'location': '山东 济南',
+          'profile_image_url': 'https://tvax3.sinaimg.cn/crop.0.0.828.828.50/df23231bly8gdibh8s46oj20n00n0dgh.jpg?KID=imgbed,tva&Expires=1680954337&ssig=%2F5zjpRhCIY',
+          'profile_url': 'https://weibo.com/u/3743621915',
+          'screen_name': '你的大川同学',
+          'statuses_count': 22687,
+          'statuses_count_str': ''},
+ 'user_id': '3743621915',
+ 'user_profile_url': 'https://weibo.com/u/3743621915',
+ 'weibo_url': 'https://weibo.com/3743621915/MysCf8zXd'}
+2023-04-08 16:45:38 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MwVlX6hYa> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=38)
+2023-04-08 16:45:39 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=6429028232> (referer: https://weibo.com/ajax/statuses/show?id=MyhbLhiad)
+2023-04-08 16:45:40 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=6429028232>
+{'attitudes_count': 0,
+ 'comments_count': 1,
+ 'created_at': '2023-03-21 11:33:23',
+ 'keyword': '联想小新',
+ 'mblog_id': 'MyhbLhiad',
+ 'mid': '4881692294121401',
+ 'region_name': '安徽',
+ 'reposts_count': 0,
+ 'source': 'iPhone客户端',
+ 'task_code': 'test_task_code',
+ 'text': '<img alt="[裂开]" title="[裂开]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/1b/202011_liekai_org.png" '
+         '/><a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%23" '
+         'target="_blank">#联想小新#</a> \u200b\u200b\u200b',
+ 'text_length': 16,
+ 'text_raw': '[裂开]#联想小新# \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax3.sinaimg.cn/crop.0.0.1080.1080.1024/00715xVKly8h1okx5difkj30u00u0q60.jpg?KID=imgbed,tva&Expires=1680954339&ssig=BySG%2FID1A7',
+          'avatar_large_url': 'https://tvax3.sinaimg.cn/crop.0.0.1080.1080.180/00715xVKly8h1okx5difkj30u00u0q60.jpg?KID=imgbed,tva&Expires=1680954339&ssig=OHtzg5K483',
+          'description': '话唠，别管，别看',
+          'followers_count': 23,
+          'followers_count_str': '23',
+          'friends_count': 49,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 6429028232,
+          'id_str': '6429028232',
+          'location': '其他',
+          'profile_image_url': 'https://tvax3.sinaimg.cn/crop.0.0.1080.1080.50/00715xVKly8h1okx5difkj30u00u0q60.jpg?KID=imgbed,tva&Expires=1680954339&ssig=mFGNKA2910',
+          'profile_url': 'https://weibo.com/u/6429028232',
+          'screen_name': '草莓甜甜--',
+          'statuses_count': 133,
+          'statuses_count_str': ''},
+ 'user_id': '6429028232',
+ 'user_profile_url': 'https://weibo.com/u/6429028232',
+ 'weibo_url': 'https://weibo.com/6429028232/MyhbLhiad'}
+2023-04-08 16:45:41 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/profile/info?uid=2438367144> (referer: https://weibo.com/ajax/statuses/show?id=My4146f2h)
+2023-04-08 16:45:41 [scrapy.core.scraper] DEBUG: Scraped from <200 https://weibo.com/ajax/profile/info?uid=2438367144>
+{'attitudes_count': 0,
+ 'comments_count': 0,
+ 'created_at': '2023-03-20 02:01:19',
+ 'keyword': '联想小新',
+ 'mblog_id': 'My4146f2h',
+ 'mid': '4881185941487769',
+ 'region_name': '广西',
+ 'reposts_count': 0,
+ 'source': 'iPhone客户端',
+ 'task_code': 'test_task_code',
+ 'text': '<a '
+         'href="//s.weibo.com/weibo?q=%23%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0%5B%E8%B6%85%E8%AF%9D%5D%23" '
+         'target="_blank"><a target="_blank" '
+         'href="https://weibo.com/p/1008085b1698b02d1feec7eb940b921abcb34f"><img '
+         'class="icon-link" '
+         'src="https://h5.sinaimg.cn/upload/100/959/2020/05/09/timeline_card_small_super_default.png"/>联想小新超话</a></a> '
+         '去年12月份买的小新平板pro2021  '
+         '平常都正常使用，偶尔卡机，今天充满电使用10分钟后突然平板黑屏，然后现在一直开不了机。按电源键+音量上下也是没反应<img '
+         'alt="[裂开]" title="[裂开]" '
+         'src="https://face.t.sinajs.cn/t4/appstyle/expression/ext/normal/1b/202011_liekai_org.png" '
+         '/><br />刚过保刚过两个多月就给我出问题  心累 <br />对比我买的ipad用了6年了什么问题都没出现过 '
+         '\u200b\u200b\u200b',
+ 'text_length': 245,
+ 'text_raw': '#联想小新[超话]# 去年12月份买的小新平板pro2021  '
+             '平常都正常使用，偶尔卡机，今天充满电使用10分钟后突然平板黑屏，然后现在一直开不了机。按电源键+音量上下也是没反应[裂开]\n'
+             '刚过保刚过两个多月就给我出问题  心累 \n'
+             '对比我买的ipad用了6年了什么问题都没出现过 \u200b\u200b\u200b',
+ 'user': {'avatar_hd_url': 'https://tvax1.sinaimg.cn/crop.0.0.888.888.1024/915687a8ly8gcpqwcc2noj20oo0ooaaw.jpg?KID=imgbed,tva&Expires=1680954341&ssig=ggzWCDm6%2FU',
+          'avatar_large_url': 'https://tvax1.sinaimg.cn/crop.0.0.888.888.180/915687a8ly8gcpqwcc2noj20oo0ooaaw.jpg?KID=imgbed,tva&Expires=1680954341&ssig=lmQ6oSnrKJ',
+          'description': '……',
+          'followers_count': 58,
+          'followers_count_str': '58',
+          'friends_count': 800,
+          'friends_count_str': '',
+          'gender': '女',
+          'id': 2438367144,
+          'id_str': '2438367144',
+          'location': '海外 加拿大',
+          'profile_image_url': 'https://tvax1.sinaimg.cn/crop.0.0.888.888.50/915687a8ly8gcpqwcc2noj20oo0ooaaw.jpg?KID=imgbed,tva&Expires=1680954341&ssig=AGCMKipEV5',
+          'profile_url': 'https://weibo.com/u/2438367144',
+          'screen_name': 'mimi_Sally',
+          'statuses_count': 0,
+          'statuses_count_str': ''},
+ 'user_id': '2438367144',
+ 'user_profile_url': 'https://weibo.com/u/2438367144',
+ 'weibo_url': 'https://weibo.com/2438367144/My4146f2h'}
+2023-04-08 16:45:42 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MwBHwvjDc> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=41)
+2023-04-08 16:45:43 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=MwvgMc21o> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=42)
+2023-04-08 16:45:44 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://weibo.com/ajax/statuses/show?id=Mwsts5P2o> (referer: https://s.weibo.com//weibo?q=%E8%81%94%E6%83%B3%E5%B0%8F%E6%96%B0&page=43)

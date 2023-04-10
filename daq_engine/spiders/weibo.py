@@ -4,14 +4,13 @@ import sys
 
 import scrapy
 from dateutil.parser import parse
-from scrapy_redis.spiders import RedisSpider
+from ..utils import get_redis_conn
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from items import WeiboItem, WeiboUserItem
 
 
-class WeiboSpider(RedisSpider):
-# class WeiboSpider(scrapy.Spider):
+class WeiboSpider(scrapy.Spider):
     name = 'weibo'
     allowed_domains = ['weibo.com']
     search_url = "https://s.weibo.com/weibo?q={}&page={}"
@@ -19,30 +18,37 @@ class WeiboSpider(RedisSpider):
     user_url_format = "https://weibo.com/ajax/profile/info?uid={}"
     prefix_url = 'https://s.weibo.com/'
 
-    cookies_str = "SINAGLOBAL=7698893317343.656.1676625108281; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5KMhUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt; UOR=,,www.baidu.com; ALF=1683341028; SSOLoginState=1680749028; SCF=AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJBwxD5DwPnT3SoJYoezuNbL1gdQ4OLPofGgB3Pady_gAs.; SUB=_2A25JKkG0DeRhGeRO4lQS8izMzD6IHXVqXjR8rDV8PUNbmtANLRWjkW9NUErOugbYiofoTDh5HTj1ccizdBEYT91N; _s_tentry=-; Apache=8762158465412.307.1680773289979; ULV=1680773290661:5:1:1:8762158465412.307.1680773289979:1679986583023"
-    cookies = {cookie.split('=')[0]: cookie.split('=')[1] for cookie in cookies_str.split('; ')}
-
-    redis_key = 'ms-daq-engine:weibo:search_urls'
-
     def __init__(self, *args, **kwargs):
         domain = kwargs.pop("domain", "")
+        self.task_code = kwargs.pop("task_code", "")
+        cookie_str = get_redis_conn().get("spider:cookie:weibo")
+        self.cookies = {cookie.split('=')[0]: cookie.split('=')[1] for cookie in cookie_str.split('; ')}
         self.allowed_domains = list(filter(None, domain.split(",")))
         super(WeiboSpider, self).__init__(*args, **kwargs)
 
-    def make_requests_from_url(self, url):
-        cookies_str = "SINAGLOBAL=7698893317343.656.1676625108281; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5KMhUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt; UOR=,,www.baidu.com; ULV=1679986583023:4:1:1:2908704636197.419.1679986583017:1677581670786; XSRF-TOKEN=9gIb8ASw11N-AxWytxYMDVaM; ALF=1683341028; SSOLoginState=1680749028; SCF=AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJBwxD5DwPnT3SoJYoezuNbL1gdQ4OLPofGgB3Pady_gAs.; SUB=_2A25JKkG0DeRhGeRO4lQS8izMzD6IHXVqXjR8rDV8PUNbmtANLRWjkW9NUErOugbYiofoTDh5HTj1ccizdBEYT91N; WBPSESS=j1bUqD_uu3DXTXvt20EN1O1sMUDbqv3FNH3iWPBaPvGl9W44tnW4xNxyukYfeSnltGq5WvCqYsZ1zDdqc3zmu6ZXhEUuWc79St53LpJmg_8CarhS8JhP88SZVpUteAuDA0572h2dy77HyJD4cK0SFw=="
-        cookies = {cookie.split('=')[0]: cookie.split('=')[1] for cookie in cookies_str.split('; ')}
-        return scrapy.Request(url, dont_filter=True, callback=self.parse, cookies=cookies)
+    # def make_requests_from_url(self, url):
+    #     cookies_str = "SINAGLOBAL=7698893317343.656.1676625108281; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW4qRg9syb2K5yYvmW6_z3F5JpX5KMhUgL.Foz71Kq0eoz7S0z2dJLoIpjLxKML12-L12zLxKqLB-qL1h-LxK-LBoMLB.Bt; UOR=,,www.baidu.com; ULV=1679986583023:4:1:1:2908704636197.419.1679986583017:1677581670786; XSRF-TOKEN=9gIb8ASw11N-AxWytxYMDVaM; ALF=1683341028; SSOLoginState=1680749028; SCF=AiMEd3XcailKoXZSrB6VEBc2pjNYoSGiCaRG66DKVPJBwxD5DwPnT3SoJYoezuNbL1gdQ4OLPofGgB3Pady_gAs.; SUB=_2A25JKkG0DeRhGeRO4lQS8izMzD6IHXVqXjR8rDV8PUNbmtANLRWjkW9NUErOugbYiofoTDh5HTj1ccizdBEYT91N; WBPSESS=j1bUqD_uu3DXTXvt20EN1O1sMUDbqv3FNH3iWPBaPvGl9W44tnW4xNxyukYfeSnltGq5WvCqYsZ1zDdqc3zmu6ZXhEUuWc79St53LpJmg_8CarhS8JhP88SZVpUteAuDA0572h2dy77HyJD4cK0SFw=="
+    #     cookies = {cookie.split('=')[0]: cookie.split('=')[1] for cookie in cookies_str.split('; ')}
+    #     return scrapy.Request(url, dont_filter=True, callback=self.parse, cookies=cookies)
 
     def start_requests(self):
-        start_url = self.search_url.format("联想小新", "1")
-        yield scrapy.Request(start_url, callback=self.parse, cookies=self.cookies)
+        r = get_redis_conn()
+        r_key = self.task_code + ":keywords"
+        keywords = r.lrange(r_key, 0, -1)
+        for keyword in keywords:
+            start_url = self.search_url.format(keyword, "1")
+            yield scrapy.Request(start_url, callback=self.parse, cookies=self.cookies,
+                                 meta={"task_code": self.task_code, "keyword": keyword})
 
     def parse(self, response, **kwargs):
+        task_code = response.meta["task_code"]
+        keyword = response.meta["keyword"]
         card_tags = response.xpath('//div[@class="card"]')
 
         for card_tag in card_tags:
             weibo_item = WeiboItem()
+            weibo_item["task_code"] = task_code
+            weibo_item["keyword"] = keyword
             weibo_item["user"] = {}
 
             # 避开热门文章Card
@@ -61,8 +67,6 @@ class WeiboSpider(RedisSpider):
             user_profile_url = "https://weibo.com/u/" + user_id
             weibo_item["user_profile_url"] = user_profile_url
 
-            print(weibo_item)
-
             # 解析微博详细内容
             yield scrapy.Request(self.weibo_url_format.format(weibo_id), callback=self.parse_weibo_detail,
                                  cookies=self.cookies,
@@ -72,7 +76,8 @@ class WeiboSpider(RedisSpider):
         next_page_tag = response.xpath('//div[@class="m-page"]//a[@class="next"]')
         if 0 != len(next_page_tag):
             next_url = self.prefix_url + next_page_tag[0].xpath('./@href').extract_first()
-            yield scrapy.Request(next_url, callback=self.parse, cookies=self.cookies)
+            yield scrapy.Request(next_url, callback=self.parse, cookies=self.cookies,
+                                 meta={"task_code": self.task_code, "keyword": keyword})
 
     def parse_weibo_detail(self, response):
         weibo_item = response.meta['weibo_item']
@@ -92,7 +97,7 @@ class WeiboSpider(RedisSpider):
         weibo_item["source"] = weibo_obj["source"]
 
         # 解析微博所属用户详细信息
-        user_detail_url = "https://weibo.com/ajax/profile/info?uid={}".format(weibo_item["user_id"])
+        user_detail_url = self.user_url_format.format(weibo_item["user_id"])
         yield scrapy.Request(user_detail_url, callback=self.parse_user_detail, cookies=self.cookies,
                              meta={"weibo_item": weibo_item})
 
