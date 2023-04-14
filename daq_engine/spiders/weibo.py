@@ -20,8 +20,8 @@ class WeiboSpider(scrapy.Spider):
 
     def __init__(self, *args, **kwargs):
         domain = kwargs.pop("domain", "")
-        self.task_code = kwargs.pop("task_code", "")
-        cookie_str = get_redis_conn().get("spider:cookie:weibo")
+        # self.task_code = kwargs.pop("task_code")
+        cookie_str = get_redis_conn().get("DAQ_SPIDER:COOKIES:WEIBO")
         self.cookies = {cookie.split('=')[0]: cookie.split('=')[1] for cookie in cookie_str.split('; ')}
         self.allowed_domains = list(filter(None, domain.split(",")))
         super(WeiboSpider, self).__init__(*args, **kwargs)
@@ -31,14 +31,21 @@ class WeiboSpider(scrapy.Spider):
     #     cookies = {cookie.split('=')[0]: cookie.split('=')[1] for cookie in cookies_str.split('; ')}
     #     return scrapy.Request(url, dont_filter=True, callback=self.parse, cookies=cookies)
 
+    # def start_requests(self):
+    #     r = get_redis_conn()
+    #     r_key = "DAQ_TASK:KEYWORDS:" + self.task_code
+    #     keywords = r.lrange(r_key, 0, -1)
+    #     for keyword in keywords:
+    #         start_url = self.search_url.format(keyword, "1")
+    #         yield scrapy.Request(start_url, callback=self.parse, cookies=self.cookies,
+    #                              meta={"task_code": self.task_code, "keyword": keyword})
+
     def start_requests(self):
-        r = get_redis_conn()
-        r_key = self.task_code + ":keywords"
-        keywords = r.lrange(r_key, 0, -1)
-        for keyword in keywords:
-            start_url = self.search_url.format(keyword, "1")
-            yield scrapy.Request(start_url, callback=self.parse, cookies=self.cookies,
-                                 meta={"task_code": self.task_code, "keyword": keyword})
+        # r = get_redis_conn()
+        # r_key = "DAQ_TASK:KEYWORDS:" + self.task_code
+        start_url = self.search_url.format("联想小新", "1")
+        yield scrapy.Request(start_url, callback=self.parse, cookies=self.cookies,
+                                 meta={"task_code": "test", "keyword": "联想小新"})
 
     def parse(self, response, **kwargs):
         task_code = response.meta["task_code"]
@@ -48,6 +55,7 @@ class WeiboSpider(scrapy.Spider):
         for card_tag in card_tags:
             weibo_item = WeiboItem()
             weibo_item["task_code"] = task_code
+            weibo_item["spider_code"] = self.name
             weibo_item["keyword"] = keyword
             weibo_item["user"] = {}
 
@@ -93,15 +101,16 @@ class WeiboSpider(scrapy.Spider):
         weibo_item["reposts_count"] = weibo_obj["reposts_count"]
         weibo_item["comments_count"] = weibo_obj["comments_count"]
         weibo_item["attitudes_count"] = weibo_obj["attitudes_count"]
-        weibo_item["region_name"] = weibo_obj["region_name"].split(" ")[-1]
+        if "region_name" in weibo_obj:
+            weibo_item["region_name"] = weibo_obj["region_name"].split(" ")[-1]
         weibo_item["source"] = weibo_obj["source"]
 
         # 解析微博所属用户详细信息
         user_detail_url = self.user_url_format.format(weibo_item["user_id"])
-        yield scrapy.Request(user_detail_url, callback=self.parse_user_detail, cookies=self.cookies,
+        yield scrapy.Request(user_detail_url, callback=self.parse_weibo_user, cookies=self.cookies,
                              meta={"weibo_item": weibo_item})
 
-    def parse_user_detail(self, response):
+    def parse_weibo_user(self, response):
         weibo_item = response.meta['weibo_item']
 
         user = WeiboUserItem()

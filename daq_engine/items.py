@@ -14,13 +14,75 @@ class DaqEngineItem(scrapy.Item):
 
 class WeiboItem(scrapy.Item):
     task_code = scrapy.Field()
-    keyword = scrapy.Field()
+    task_keyword = scrapy.Field()
 
     mid = scrapy.Field()
     mblog_id = scrapy.Field()
     created_at = scrapy.Field()
     text_raw = scrapy.Field()
     text = scrapy.Field()
+    text_length = scrapy.Field()
+    reposts_count = scrapy.Field()
+    comments_count = scrapy.Field()
+    likes_count = scrapy.Field()
+    region_name = scrapy.Field()
+    source = scrapy.Field()
+    weibo_url = scrapy.Field()
+
+    uid = scrapy.Field()
+    user_screen_name = scrapy.Field()
+    user_profile_url = scrapy.Field()
+
+
+class WeiboUserItem(scrapy.Item):
+    task_code = scrapy.Field()
+    task_keyword = scrapy.Field()
+
+    uid = scrapy.Field()  # 用户的ID
+    created_at = scrapy.Field()  # 用户创建时间
+    screen_name = scrapy.Field()  # 微博昵称
+    gender = scrapy.Field()  # 性别（m男f女）
+    birthday = scrapy.Field()  # 生日星座
+    location = scrapy.Field()  # 位置
+    description = scrapy.Field()  # 个人描述
+    profile_url = scrapy.Field()  # 个人主页网址
+    verified = scrapy.Field()  # 认证用户
+    credit_level = scrapy.Field()  # 信用等级
+
+    followers_count = scrapy.Field()  # 粉丝数量
+    followers_count_str = scrapy.Field()  # 粉丝数量字符串
+    follows_count = scrapy.Field()  # 关注数量
+    follows_count_str = scrapy.Field()  # 关注数量字符串
+    weibos_count = scrapy.Field()  # 历史微博数量
+    weibos_count_str = scrapy.Field()  # 历史微博数量字符串
+
+
+class WeiboCommentItem(scrapy.Item):
+    task_code = scrapy.Field()
+    task_keyword = scrapy.Field()
+
+    cid = scrapy.Field()  # 评论的ID
+    mid = scrapy.Field()  # 微博的ID
+    uid = scrapy.Field()  # 发评论用户的ID
+
+    text_raw = scrapy.Field()  # 评论原始文本
+    text = scrapy.Field()  # 评论格式化文本
+    likes_count = scrapy.Field()  # 点赞数
+    source = scrapy.Field()  # 评论发布地
+    created_at = scrapy.Field()  # 评论发布时间
+
+
+class WeiboRepostItem(scrapy.Item):
+    task_code = scrapy.Field()
+    task_keyword = scrapy.Field()
+
+    mid = scrapy.Field()
+    mblog_id = scrapy.Field()
+    created_at = scrapy.Field()
+
+    text_raw = scrapy.Field()
+    text = scrapy.Field()
+
     text_length = scrapy.Field()
     reposts_count = scrapy.Field()
     comments_count = scrapy.Field()
@@ -35,27 +97,10 @@ class WeiboItem(scrapy.Item):
     user_profile_url = scrapy.Field()
 
 
-class WeiboUserItem(scrapy.Item):
-    id = scrapy.Field()
-    id_str = scrapy.Field()
+class WeiboLikeItem(scrapy.Item):
+    task_code = scrapy.Field()
+    task_keyword = scrapy.Field()
 
-    screen_name = scrapy.Field()  # 网名
-    gender = scrapy.Field()
-    location = scrapy.Field()
-    description = scrapy.Field()
-
-    profile_url = scrapy.Field()  # 个人主页网址
-    profile_image_url = scrapy.Field()
-    avatar_large_url = scrapy.Field()
-    avatar_hd_url = scrapy.Field()
-
-    followers_count = scrapy.Field()  # 粉丝数量
-    followers_count_str = scrapy.Field()
-    friends_count = scrapy.Field()  # 关注数量
-    friends_count_str = scrapy.Field()
-    statuses_count = scrapy.Field()  # 历史微博数量
-    statuses_count_str = scrapy.Field()
-
-
-class WeiboCommentItem(scrapy.Item):
-    pass
+    mid = scrapy.Field()  # 微博的ID
+    uid = scrapy.Field()  # 点赞用户的ID
+    like = scrapy.Field()

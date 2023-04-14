@@ -2,11 +2,8 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-from pymongo import MongoClient
 # useful for handling different item types with a single interface
-from itemadapter import ItemAdapter
-from pymongo import MongoClient
-
+from items import WeiboCommentItem, WeiboUserItem
 from utils import get_mongo_conn
 
 
@@ -23,10 +20,15 @@ class WeiboMongoPipeline(object):
 
     def open_spider(self, spider):
         mongo_conn = get_mongo_conn()
-        self.weibo_collection = mongo_conn[spider.settings["MONGO_DOC_WEIBO"]]
+        self.weibo_collection = mongo_conn[spider.name]
 
     def process_item(self, item, spider):
         if spider.name == "weibo":
             item["user"] = dict(item["user"])
             self.weibo_collection.insert_one(dict(item))
+
+        if type(item) == WeiboUserItem:
+        # if spider.name == "weibo_comment":
+            print(item)
+
         return item
