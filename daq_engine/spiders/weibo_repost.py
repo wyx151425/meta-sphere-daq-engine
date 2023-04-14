@@ -3,7 +3,7 @@ import json
 import scrapy
 from dateutil.parser import parse
 
-from items import WeiboRepostItem
+from items import WeiboRepostItem, WeiboUserItem
 from utils import get_redis_conn
 
 
@@ -12,6 +12,7 @@ class WeiboRepostSpider(scrapy.Spider):
     allowed_domains = ['weibo.com']
     start_urls = ['http://weibo.com/']
 
+    f_weibo_link_url = "https://weibo.com/{}/{}"
     f_weibo_reposts_url = "https://weibo.com/ajax/statuses/repostTimeline?id={}&page={}&moduleID=feed&count=20"
     f_weibo_user_info_url = "https://weibo.com/ajax/profile/info?uid={}"
     f_weibo_user_detail_url = "https://weibo.com/ajax/profile/detail?uid={}"
@@ -28,9 +29,9 @@ class WeiboRepostSpider(scrapy.Spider):
     def start_requests(self):
         task_code = "ms-daq-engine"
         task_keyword = "test"
-        start_url = self.f_weibo_likes_url.format("4890372830923147", 1)
+        start_url = self.f_weibo_reposts_url.format("4890372830923147", 1)
         yield scrapy.Request(start_url, callback=self.parse_weibo_likes, cookies=self.cookies,
-                             meta={"mid": "4890372830923147", "page": 0, "task_code": task_code,
+                             meta={"mid": "4890372830923147", "page": 1, "task_code": task_code,
                                    "task_keyword": task_keyword})
 
     def parse_weibo_likes(self, response):
@@ -40,27 +41,44 @@ class WeiboRepostSpider(scrapy.Spider):
         task_keyword = response.meta["task_keyword"]
 
         json_obj = json.loads(response.text)
-        weibo_like_objs = json_obj["data"]
+        weibo_repost_objs = json_obj["data"]
 
-        if len(weibo_like_objs) > 0:
-            for weibo_like_obj in weibo_like_objs:
-                weibo_like = WeiboLikeItem()
-                weibo_like["task_code"] = task_code
-                weibo_like["task_keyword"] = task_keyword
-                weibo_like["mid"] = mid
-                weibo_like["uid"] = weibo_like_obj["user"]["idstr"]
-                weibo_like["like"] = weibo_like_obj["attitude"]
-                yield weibo_like
+        if len(weibo_repost_objs) > 0:
+            for weibo_repost_obj in weibo_repost_objs:
+                weibo_repost = WeiboRepostItem()
+                weibo_repost["task_code"] = task_code
+                weibo_repost["task_keyword"] = task_keyword
+
+                weibo_repost["mid"] = weibo_repost_obj["mid"]
+                weibo_repost["uid"] = weibo_repost_obj["user"]["idstr"]
+                weibo_repost["hash_mid"] = weibo_repost_obj["mblogid"]
+                weibo_repost["created_at"] = str(parse(weibo_repost_obj["created_at"])).split('+')[0]
+
+                weibo_repost["text_raw"] = weibo_repost_obj["text_raw"]
+                weibo_repost["text"] = weibo_repost_obj["text"]
+                weibo_repost["source"] = weibo_repost_obj["source"]
+                weibo_repost["weibo_url"] = self.f_weibo_link_url.format(weibo_repost["uid"], weibo_repost["hash_mid"])
+
+                if "region_name" in weibo_repost_obj:
+                    weibo_repost["region_name"] = weibo_repost_obj["region_name"].split(" ")[-1]
+
+                weibo_repost["reposts_count"] = weibo_repost_obj["reposts_count"]
+                weibo_repost["comments_count"] = weibo_repost_obj["comments_count"]
+                weibo_repost["likes_count"] = weibo_repost_obj["attitudes_count"]
+
+                weibo_repost["user_screen_name"] = weibo_repost_obj["user"]["screen_name"]
+
+                yield weibo_repost
 
                 # 解析点赞所属用户详细信息
-                weibo_user_info_url = self.f_weibo_user_info_url.format(weibo_like["uid"])
+                weibo_user_info_url = self.f_weibo_user_info_url.format(weibo_repost["uid"])
                 yield scrapy.Request(weibo_user_info_url, callback=self.parse_weibo_user_info, cookies=self.cookies,
                                      meta={"task_code": task_code, "task_keyword": task_keyword})
 
         # 解析微博所属用户详细信息
         next_page = page + 1
-        weibo_likes_url = self.f_weibo_likes_url.format(mid, next_page)
-        yield scrapy.Request(weibo_likes_url, callback=self.parse_weibo_likes, cookies=self.cookies,
+        weibo_reposts_url = self.f_weibo_reposts_url.format(mid, next_page)
+        yield scrapy.Request(weibo_reposts_url, callback=self.parse_weibo_likes, cookies=self.cookies,
                              meta={"mid": mid, "page": next_page, "task_code": task_code, "task_keyword": task_keyword})
 
     def parse_weibo_user_info(self, response):

@@ -50,7 +50,7 @@ class WeiboCommentSpider(scrapy.Spider):
             weibo_comment["text_raw"] = weibo_comment_obj["text_raw"]
             weibo_comment["text"] = weibo_comment_obj["text"]
             weibo_comment["likes_count"] = weibo_comment_obj["like_counts"]
-            weibo_comment["source"] = weibo_comment_obj["source"].split("来自")[-1]
+            weibo_comment["source"] = weibo_comment_obj["source"]
             weibo_comment["created_at"] = str(parse(weibo_comment_obj["created_at"])).split('+')[0]
             yield weibo_comment
 

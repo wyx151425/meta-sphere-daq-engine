@@ -17,21 +17,22 @@ class WeiboItem(scrapy.Item):
     task_keyword = scrapy.Field()
 
     mid = scrapy.Field()
-    mblog_id = scrapy.Field()
+    hash_mid = scrapy.Field()
     created_at = scrapy.Field()
     text_raw = scrapy.Field()
     text = scrapy.Field()
     text_length = scrapy.Field()
-    reposts_count = scrapy.Field()
-    comments_count = scrapy.Field()
-    likes_count = scrapy.Field()
     region_name = scrapy.Field()
     source = scrapy.Field()
     weibo_url = scrapy.Field()
 
+    reposts_count = scrapy.Field()
+    comments_count = scrapy.Field()
+    likes_count = scrapy.Field()
+
+
     uid = scrapy.Field()
     user_screen_name = scrapy.Field()
-    user_profile_url = scrapy.Field()
 
 
 class WeiboUserItem(scrapy.Item):
@@ -77,24 +78,21 @@ class WeiboRepostItem(scrapy.Item):
     task_keyword = scrapy.Field()
 
     mid = scrapy.Field()
-    mblog_id = scrapy.Field()
+    uid = scrapy.Field()
+    hash_mid = scrapy.Field()
     created_at = scrapy.Field()
 
     text_raw = scrapy.Field()
     text = scrapy.Field()
-
-    text_length = scrapy.Field()
-    reposts_count = scrapy.Field()
-    comments_count = scrapy.Field()
-    attitudes_count = scrapy.Field()  # 点赞数
-    region_name = scrapy.Field()
     source = scrapy.Field()
     weibo_url = scrapy.Field()
+    region_name = scrapy.Field()
 
-    user = scrapy.Field()
-    user_id = scrapy.Field()
+    reposts_count = scrapy.Field()
+    comments_count = scrapy.Field()
+    likes_count = scrapy.Field()
+
     user_screen_name = scrapy.Field()
-    user_profile_url = scrapy.Field()
 
 
 class WeiboLikeItem(scrapy.Item):
