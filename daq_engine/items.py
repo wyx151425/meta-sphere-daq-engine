@@ -17,21 +17,21 @@ class WeiboItem(scrapy.Item):
     task_keyword = scrapy.Field()
 
     mid = scrapy.Field()
+    uid = scrapy.Field()
     hash_mid = scrapy.Field()
     created_at = scrapy.Field()
+
     text_raw = scrapy.Field()
     text = scrapy.Field()
     text_length = scrapy.Field()
-    region_name = scrapy.Field()
     source = scrapy.Field()
     weibo_url = scrapy.Field()
+    region_name = scrapy.Field()
 
     reposts_count = scrapy.Field()
     comments_count = scrapy.Field()
     likes_count = scrapy.Field()
 
-
-    uid = scrapy.Field()
     user_screen_name = scrapy.Field()
 
 
@@ -43,8 +43,10 @@ class WeiboUserItem(scrapy.Item):
     created_at = scrapy.Field()  # 用户创建时间
     screen_name = scrapy.Field()  # 微博昵称
     gender = scrapy.Field()  # 性别（m男f女）
-    birthday = scrapy.Field()  # 生日星座
-    location = scrapy.Field()  # 位置
+    birthday = scrapy.Field()  # 生日
+    constellation = scrapy.Field()  # 星座
+    province = scrapy.Field()  # 所在省份
+    city = scrapy.Field()  # 所在城市
     description = scrapy.Field()  # 个人描述
     profile_url = scrapy.Field()  # 个人主页网址
     verified = scrapy.Field()  # 认证用户
@@ -77,7 +79,8 @@ class WeiboRepostItem(scrapy.Item):
     task_code = scrapy.Field()
     task_keyword = scrapy.Field()
 
-    mid = scrapy.Field()
+    mid = scrapy.Field()  # 该转发微博的ID
+    oid = scrapy.Field()  # 被转发微博的ID
     uid = scrapy.Field()
     hash_mid = scrapy.Field()
     created_at = scrapy.Field()

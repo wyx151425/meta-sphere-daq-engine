@@ -59,7 +59,6 @@ class WeiboCommentSpider(scrapy.Spider):
             yield scrapy.Request(weibo_user_info_url, callback=self.parse_weibo_user_info, cookies=self.cookies,
                                  meta={"task_code": task_code, "task_keyword": task_keyword})
 
-
         max_id = json_obj["max_id"]
         if 0 != max_id:
             # 解析微博所属用户详细信息
@@ -81,7 +80,12 @@ class WeiboCommentSpider(scrapy.Spider):
         weibo_user["uid"] = user_obj["idstr"]
         weibo_user["screen_name"] = user_obj["screen_name"]
         weibo_user["gender"] = "男" if "m" == user_obj["gender"] else "女"  # m男 f女
-        weibo_user["location"] = user_obj["location"]
+
+        location = user_obj["location"].split(" ")
+        weibo_user["province"] = location[0]
+        if len(location) > 1:
+            weibo_user["city"] = location[-1]
+
         weibo_user["description"] = user_obj["description"]
         weibo_user["profile_url"] = "https://weibo.com" + user_obj["profile_url"]
         weibo_user["verified"] = 1 if user_obj["description"] else 0
@@ -114,8 +118,13 @@ class WeiboCommentSpider(scrapy.Spider):
         json_obj = json.loads(response.text)
         user_obj = json_obj["data"]
 
-        weibo_user["created_at"] = str(parse(user_obj["created_at"])).split('+')[0]
-        weibo_user["birthday"] = user_obj["birthday"]
+        weibo_user["created_at"] = str(parse(user_obj["created_at"])).split("+")[0]
+
+        birthday = user_obj["birthday"].split(" ")
+        if len(birthday) > 1:
+            weibo_user["birthday"] = birthday[0]
+        weibo_user["constellation"] = birthday[-1]
+
         weibo_user["credit_level"] = user_obj["sunshine_credit"]["level"]
 
-        return weibo_user
+        yield weibo_user

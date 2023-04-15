@@ -30,12 +30,12 @@ class WeiboRepostSpider(scrapy.Spider):
         task_code = "ms-daq-engine"
         task_keyword = "test"
         start_url = self.f_weibo_reposts_url.format("4890372830923147", 1)
-        yield scrapy.Request(start_url, callback=self.parse_weibo_likes, cookies=self.cookies,
-                             meta={"mid": "4890372830923147", "page": 1, "task_code": task_code,
+        yield scrapy.Request(start_url, callback=self.parse_weibo_reposts, cookies=self.cookies,
+                             meta={"oid": "4890372830923147", "page": 1, "task_code": task_code,
                                    "task_keyword": task_keyword})
 
-    def parse_weibo_likes(self, response):
-        mid = response.meta["mid"]
+    def parse_weibo_reposts(self, response):
+        oid = response.meta["oid"]
         page = response.meta["page"]
         task_code = response.meta["task_code"]
         task_keyword = response.meta["task_keyword"]
@@ -50,6 +50,7 @@ class WeiboRepostSpider(scrapy.Spider):
                 weibo_repost["task_keyword"] = task_keyword
 
                 weibo_repost["mid"] = weibo_repost_obj["mid"]
+                weibo_repost["oid"] = oid
                 weibo_repost["uid"] = weibo_repost_obj["user"]["idstr"]
                 weibo_repost["hash_mid"] = weibo_repost_obj["mblogid"]
                 weibo_repost["created_at"] = str(parse(weibo_repost_obj["created_at"])).split('+')[0]
@@ -61,6 +62,8 @@ class WeiboRepostSpider(scrapy.Spider):
 
                 if "region_name" in weibo_repost_obj:
                     weibo_repost["region_name"] = weibo_repost_obj["region_name"].split(" ")[-1]
+                else:
+                    weibo_repost["region_name"] = "其他"
 
                 weibo_repost["reposts_count"] = weibo_repost_obj["reposts_count"]
                 weibo_repost["comments_count"] = weibo_repost_obj["comments_count"]
@@ -75,11 +78,12 @@ class WeiboRepostSpider(scrapy.Spider):
                 yield scrapy.Request(weibo_user_info_url, callback=self.parse_weibo_user_info, cookies=self.cookies,
                                      meta={"task_code": task_code, "task_keyword": task_keyword})
 
-        # 解析微博所属用户详细信息
-        next_page = page + 1
-        weibo_reposts_url = self.f_weibo_reposts_url.format(mid, next_page)
-        yield scrapy.Request(weibo_reposts_url, callback=self.parse_weibo_likes, cookies=self.cookies,
-                             meta={"mid": mid, "page": next_page, "task_code": task_code, "task_keyword": task_keyword})
+            # 解析微博所属用户详细信息
+            next_page = page + 1
+            weibo_reposts_url = self.f_weibo_reposts_url.format(oid, next_page)
+            yield scrapy.Request(weibo_reposts_url, callback=self.parse_weibo_reposts, cookies=self.cookies,
+                                 meta={"oid": oid, "page": next_page, "task_code": task_code,
+                                       "task_keyword": task_keyword})
 
     def parse_weibo_user_info(self, response):
         task_code = response.meta["task_code"]
@@ -95,7 +99,12 @@ class WeiboRepostSpider(scrapy.Spider):
         weibo_user["uid"] = user_obj["idstr"]
         weibo_user["screen_name"] = user_obj["screen_name"]
         weibo_user["gender"] = "男" if "m" == user_obj["gender"] else "女"  # m男 f女
-        weibo_user["location"] = user_obj["location"]
+
+        location = user_obj["location"].split(" ")
+        weibo_user["province"] = location[0]
+        if len(location) > 1:
+            weibo_user["city"] = location[-1]
+
         weibo_user["description"] = user_obj["description"]
         weibo_user["profile_url"] = "https://weibo.com" + user_obj["profile_url"]
         weibo_user["verified"] = 1 if user_obj["description"] else 0
@@ -128,8 +137,13 @@ class WeiboRepostSpider(scrapy.Spider):
         json_obj = json.loads(response.text)
         user_obj = json_obj["data"]
 
-        weibo_user["created_at"] = str(parse(user_obj["created_at"])).split('+')[0]
-        weibo_user["birthday"] = user_obj["birthday"]
+        weibo_user["created_at"] = str(parse(user_obj["created_at"])).split("+")[0]
+
+        birthday = user_obj["birthday"].split(" ")
+        if len(birthday) > 1:
+            weibo_user["birthday"] = birthday[0]
+        weibo_user["constellation"] = birthday[-1]
+
         weibo_user["credit_level"] = user_obj["sunshine_credit"]["level"]
 
-        return weibo_user
+        yield weibo_user
