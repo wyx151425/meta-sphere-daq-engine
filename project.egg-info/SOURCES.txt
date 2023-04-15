@@ -13,11 +13,11 @@ daq_engine/spiders/ifeng.py
 daq_engine/spiders/people.py
 daq_engine/spiders/thepaper.py
 daq_engine/spiders/weibo.py
-daq_engine/spiders/weibo_account.py
-daq_engine/spiders/weibo_comment.py
 daq_engine/spiders/xinhuanet.py
 daq_engine/spiders/zhihu.py
 dbs/default.db
+dbs/ms-daq-engine.db
+eggs/ms-daq-engine/1681297293.egg
 project.egg-info/PKG-INFO
 project.egg-info/SOURCES.txt
 project.egg-info/dependency_links.txt

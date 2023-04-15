@@ -63,7 +63,8 @@ NEWSPIDER_MODULE = 'daq_engine.spiders'
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     'daq_engine.pipelines.DaqEnginePipeline': 300,
-    'daq_engine.pipelines.WeiboMongoPipeline': 400
+    'daq_engine.pipelines.WeiboMongoPipeline': 400,
+    'scrapy_redis.pipelines.RedisPipeline': 500,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -87,8 +88,13 @@ ITEM_PIPELINES = {
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-# DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
-# SCHEDULER = "scrapy_redis.scheduler.Scheduler"
-# SCHEDULER_PERSIST = True
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+SCHEDULER_PERSIST = True
+
+REDIS_HOST = "180.201.163.246"
+REDIS_PORT = 42001
+REDIS_ENCODING = "utf-8"
+REDIS_PARAMS = {"password": "151425"}
 
 DOWNLOAD_DELAY = 1
