@@ -18,6 +18,7 @@ daq_engine/spiders/zhihu.py
 dbs/default.db
 dbs/ms-daq-engine.db
 eggs/ms-daq-engine/1681297293.egg
+eggs/ms-daq-engine/1681544618.egg
 project.egg-info/PKG-INFO
 project.egg-info/SOURCES.txt
 project.egg-info/dependency_links.txt

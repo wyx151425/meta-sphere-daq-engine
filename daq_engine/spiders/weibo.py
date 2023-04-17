@@ -41,7 +41,7 @@ class WeiboSpider(RedisSpider):
         super(WeiboSpider, self).__init__(*args, **kwargs)
 
     def make_requests_from_url(self, keyword):
-        weibo_search_url = self.f_weibo_search_url.format(keyword, 0)
+        weibo_search_url = self.f_weibo_search_url.format(keyword, 1)
         return scrapy.Request(weibo_search_url, dont_filter=True, callback=self.parse_weibo_search,
                               cookies=self.cookies,
                               meta={"task_code": self.task_code, "task_keyword": keyword})
