@@ -1,6 +1,8 @@
 import json
+import logging
 import os
 import sys
+from json import JSONDecodeError
 
 import scrapy
 from dateutil.parser import parse
@@ -19,7 +21,7 @@ class WeiboSpider(RedisSpider):
 
     f_redis_key = "DAQ_TASK:KEYWORDS:{}"
 
-    f_weibo_prefix_url = 'https://s.weibo.com/{}'
+    f_weibo_prefix_url = "https://s.weibo.com/{}"
     f_weibo_search_url = "https://s.weibo.com/weibo?q={}&page={}"
 
     f_weibo_url = "https://weibo.com/ajax/statuses/show?id={}"
@@ -28,7 +30,7 @@ class WeiboSpider(RedisSpider):
     f_weibo_user_detail_url = "https://weibo.com/ajax/profile/detail?uid={}"
 
     f_weibo_likes_url = "https://weibo.com/ajax/statuses/likeShow?id={}&attitude_type=0&attitude_enable=1&page={}&count=20"
-    f_weibo_comments_url = "https://weibo.com/ajax/statuses/buildComments?flow=1&is_reload=1&id={}&is_show_bulletin=2&is_mix=0&count=20&uid=6779221195&fetch_level=0&max_id={}"
+    f_weibo_comments_url = "https://weibo.com/ajax/statuses/buildComments?flow=1&is_reload=1&id={}&is_show_bulletin=2&is_mix=0&count=20&uid={}&fetch_level=0&max_id={}"
     f_weibo_reposts_url = "https://weibo.com/ajax/statuses/repostTimeline?id={}&page={}&moduleID=feed&count=20"
 
     def __init__(self, *args, **kwargs):
@@ -40,13 +42,13 @@ class WeiboSpider(RedisSpider):
 
         super(WeiboSpider, self).__init__(*args, **kwargs)
 
-    def make_requests_from_url(self, keyword):
-        weibo_search_url = self.f_weibo_search_url.format(keyword, 1)
-        return scrapy.Request(weibo_search_url, dont_filter=True, callback=self.parse_weibo_search,
+    def make_requests_from_url(self, task_keyword):
+        weibo_search_url = self.f_weibo_search_url.format(task_keyword, 1)
+        return scrapy.Request(weibo_search_url, dont_filter=True, callback=self.parse,
                               cookies=self.cookies,
-                              meta={"task_code": self.task_code, "task_keyword": keyword})
+                              meta={"task_code": self.task_code, "task_keyword": task_keyword})
 
-    def parse_weibo_search(self, response):
+    def parse(self, response, **kwargs):
         task_code = response.meta["task_code"]
         task_keyword = response.meta["task_keyword"]
         card_tags = response.xpath('//div[@class="card"]')
@@ -80,7 +82,7 @@ class WeiboSpider(RedisSpider):
         next_page_tag = response.xpath('//div[@class="m-page"]//a[@class="next"]')
         if 0 != len(next_page_tag):
             next_url = self.f_weibo_prefix_url.format(next_page_tag[0].xpath('./@href').extract_first())
-            yield scrapy.Request(next_url, callback=self.parse_weibo_search, cookies=self.cookies,
+            yield scrapy.Request(next_url, callback=self.parse, cookies=self.cookies,
                                  meta={"task_code": task_code, "task_keyword": task_keyword})
 
     def parse_weibo(self, response):
@@ -117,10 +119,12 @@ class WeiboSpider(RedisSpider):
         yield scrapy.Request(weibo_likes_url, callback=self.parse_weibo_likes, cookies=self.cookies,
                              meta={"mid": weibo_item["mid"], "page": 1, "task_code": weibo_item["task_code"],
                                    "task_keyword": weibo_item["task_keyword"]})
+
         # 解析微博评论信息
-        weibo_comments_url = self.f_weibo_comments_url.format(weibo_item["mid"], 0)
+        weibo_comments_url = self.f_weibo_comments_url.format(weibo_item["mid"], weibo_item["uid"], 0)
         yield scrapy.Request(weibo_comments_url, callback=self.parse_weibo_comments, cookies=self.cookies,
-                             meta={"mid": weibo_item["mid"], "task_code": weibo_item["task_code"],
+                             meta={"mid": weibo_item["mid"], "uid": weibo_item["uid"],
+                                   "task_code": weibo_item["task_code"],
                                    "task_keyword": weibo_item["task_keyword"]})
 
         # 解析微博转发信息
@@ -133,49 +137,53 @@ class WeiboSpider(RedisSpider):
         task_code = response.meta["task_code"]
         task_keyword = response.meta["task_keyword"]
 
-        json_obj = json.loads(response.text)
-        user_obj = json_obj["data"]["user"]
+        try:
+            json_obj = json.loads(response.text)
+            user_obj = json_obj["data"]["user"]
 
-        weibo_user = WeiboUserItem()
+            weibo_user = WeiboUserItem()
 
-        weibo_user["task_code"] = task_code
-        weibo_user["task_keyword"] = task_keyword
-        weibo_user["uid"] = user_obj["idstr"]
-        weibo_user["screen_name"] = user_obj["screen_name"]
-        weibo_user["gender"] = "男" if "m" == user_obj["gender"] else "女"  # m男 f女
+            weibo_user["task_code"] = task_code
+            weibo_user["task_keyword"] = task_keyword
+            weibo_user["uid"] = user_obj["idstr"]
+            weibo_user["screen_name"] = user_obj["screen_name"]
+            weibo_user["gender"] = "男" if "m" == user_obj["gender"] else "女"  # m男 f女
 
-        location = user_obj["location"].split(" ")
-        weibo_user["province"] = location[0]
-        if len(location) > 1:
-            weibo_user["city"] = location[-1]
-        else:
-            weibo_user["city"] = ""
+            location = user_obj["location"].split(" ")
+            weibo_user["province"] = location[0]
+            if len(location) > 1:
+                weibo_user["city"] = location[-1]
+            else:
+                weibo_user["city"] = ""
 
-        weibo_user["description"] = user_obj["description"]
-        weibo_user["profile_url"] = "https://weibo.com" + user_obj["profile_url"]
-        weibo_user["verified"] = 1 if user_obj["description"] else 0
+            weibo_user["description"] = user_obj["description"]
+            weibo_user["profile_url"] = "https://weibo.com" + user_obj["profile_url"]
+            weibo_user["verified"] = 1 if user_obj["description"] else 0
 
-        weibo_user["follows_count"] = user_obj["friends_count"]
-        if "friends_count_str" in user_obj:
-            weibo_user["follows_count_str"] = user_obj["friends_count_str"]
-        else:
-            weibo_user["follows_count_str"] = ""
+            weibo_user["follows_count"] = user_obj["friends_count"]
+            if "friends_count_str" in user_obj:
+                weibo_user["follows_count_str"] = user_obj["friends_count_str"]
+            else:
+                weibo_user["follows_count_str"] = ""
 
-        weibo_user["followers_count"] = user_obj["followers_count"]
-        if "followers_count_str" in user_obj:
-            weibo_user["followers_count_str"] = user_obj["followers_count_str"]
-        else:
-            weibo_user["followers_count_str"] = ""
+            weibo_user["followers_count"] = user_obj["followers_count"]
+            if "followers_count_str" in user_obj:
+                weibo_user["followers_count_str"] = user_obj["followers_count_str"]
+            else:
+                weibo_user["followers_count_str"] = ""
 
-        weibo_user["weibos_count"] = user_obj["statuses_count"]
-        if "statuses_count_str" in user_obj:
-            weibo_user["weibos_count_str"] = user_obj["statuses_count_str"]
-        else:
-            weibo_user["weibos_count_str"] = ""
+            weibo_user["weibos_count"] = user_obj["statuses_count"]
+            if "statuses_count_str" in user_obj:
+                weibo_user["weibos_count_str"] = user_obj["statuses_count_str"]
+            else:
+                weibo_user["weibos_count_str"] = ""
 
-        weibo_user_detail_url = self.f_weibo_user_detail_url.format(weibo_user["uid"])
-        yield scrapy.Request(weibo_user_detail_url, callback=self.parse_weibo_user_detail, cookies=self.cookies,
-                             meta={"weibo_user": weibo_user})
+            weibo_user_detail_url = self.f_weibo_user_detail_url.format(weibo_user["uid"])
+            yield scrapy.Request(weibo_user_detail_url, callback=self.parse_weibo_user_detail, cookies=self.cookies,
+                                 meta={"weibo_user": weibo_user})
+
+        except JSONDecodeError as e:
+            logging.error(e.msg)
 
     def parse_weibo_user_detail(self, response):
         weibo_user = response.meta["weibo_user"]
@@ -229,6 +237,7 @@ class WeiboSpider(RedisSpider):
 
     def parse_weibo_comments(self, response):
         mid = response.meta["mid"]
+        uid = response.meta["uid"]
         task_code = response.meta["task_code"]
         task_keyword = response.meta["task_keyword"]
 
@@ -257,9 +266,9 @@ class WeiboSpider(RedisSpider):
         max_id = json_obj["max_id"]
         if 0 != max_id:
             # 下一页
-            weibo_comment_url = self.f_weibo_comments_url.format(mid, max_id)
+            weibo_comment_url = self.f_weibo_comments_url.format(mid, uid, max_id)
             yield scrapy.Request(weibo_comment_url, callback=self.parse_weibo_comments, cookies=self.cookies,
-                                 meta={"mid": mid, "task_code": task_code, "task_keyword": task_keyword})
+                                 meta={"mid": mid, "uid": uid, "task_code": task_code, "task_keyword": task_keyword})
 
     def parse_weibo_reposts(self, response):
         oid = response.meta["oid"]

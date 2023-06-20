@@ -19,6 +19,8 @@ dbs/default.db
 dbs/ms-daq-engine.db
 eggs/ms-daq-engine/1681297293.egg
 eggs/ms-daq-engine/1681544618.egg
+eggs/ms-daq-engine/1681702037.egg
+logs/ms-daq-engine/weibo/f7703d93db6111ed9c26005056c00008.log
 project.egg-info/PKG-INFO
 project.egg-info/SOURCES.txt
 project.egg-info/dependency_links.txt
